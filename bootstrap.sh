@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# bootstrap.sh - Download and run FoxTerm installer
+# 引导脚本 - 下载并安装
 # Usage: curl -sL https://raw.githubusercontent.com/HANPU5838/HAN/main/bootstrap.sh | bash
 set -euo pipefail
 

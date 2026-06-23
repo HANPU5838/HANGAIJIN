@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# OpenClaw Android — Post-Bootstrap Setup
+# 安装后初始化配置
 # Runs in the terminal after Termux bootstrap extraction.
 # Installs: git, glibc, Node.js, OpenClaw
 #
