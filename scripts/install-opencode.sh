@@ -17,7 +17,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-OPENCLAW_DIR="$HOME/.HAN"
+OPENCLAW_DIR="$HOME/.foxterm"
 GLIBC_LDSO="$PREFIX/glibc/lib/ld-linux-aarch64.so.1"
 PROOT_ROOT="$OPENCLAW_DIR/proot-root"
 

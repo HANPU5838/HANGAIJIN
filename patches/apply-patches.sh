@@ -7,8 +7,8 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PATCH_DEST="$HOME/.HAN/patches"
-LOG_FILE="$HOME/.HAN/patch.log"
+PATCH_DEST="$HOME/.foxterm/patches"
+LOG_FILE="$HOME/.foxterm/patch.log"
 
 echo "=== Applying Patches ==="
 echo ""

@@ -184,7 +184,7 @@ fi
 # ─────────────────────────────────────────────────
 echo "--- Axis 8: glibc-compat.js integrity ---"
 
-COMPAT="$HOME/.HAN/patches/glibc-compat.js"
+COMPAT="$HOME/.foxterm/patches/glibc-compat.js"
 if [ -f "$COMPAT" ]; then
     pass "8a: glibc-compat.js exists"
 else

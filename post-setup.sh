@@ -19,7 +19,7 @@ set -eo pipefail
 : "${HOME:?HOME not set}"
 : "${TMPDIR:=$(dirname "$PREFIX")/tmp}"
 
-OCA_DIR="$HOME/.HAN"
+OCA_DIR="$HOME/.foxterm"
 NODE_DIR="$OCA_DIR/node"
 BIN_DIR="$OCA_DIR/bin"
 NODE_VERSION="22.22.0"
@@ -362,7 +362,7 @@ else
 [ -n "\$LD_PRELOAD" ] && export _OA_ORIG_LD_PRELOAD="\$LD_PRELOAD"
 unset LD_PRELOAD
 export _OA_WRAPPER_PATH="$BIN_DIR/node"
-_OA_COMPAT="\$HOME/.HAN/patches/glibc-compat.js"
+_OA_COMPAT="\$HOME/.foxterm/patches/glibc-compat.js"
 if [ -f "\$_OA_COMPAT" ]; then
     case "\${NODE_OPTIONS:-}" in
         *"\$_OA_COMPAT"*) ;;
@@ -606,8 +606,8 @@ export GIT_TEMPLATE_DIR="$PREFIX/share/git-core/templates"
 export CLAWDHUB_WORKDIR="$HOME/.openclaw/workspace"
 export CPATH="$PREFIX/include/glib-2.0:$PREFIX/lib/glib-2.0/include"
 # npm registry (auto-detected by FoxTerm, safe to override manually)
-[ -z "\${NPM_CONFIG_REGISTRY:-}" ] && [ -s "\$HOME/.HAN/.npm-registry" ] && \\
-    export NPM_CONFIG_REGISTRY="\$(cat "\$HOME/.HAN/.npm-registry")"
+[ -z "\${NPM_CONFIG_REGISTRY:-}" ] && [ -s "\$HOME/.foxterm/.npm-registry" ] && \\
+    export NPM_CONFIG_REGISTRY="\$(cat "\$HOME/.foxterm/.npm-registry")"
 BASHRC
 
 echo -e "  ${GREEN}✓${NC} ~/.bashrc configured"

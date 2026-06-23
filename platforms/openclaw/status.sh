@@ -132,7 +132,7 @@ fi
 echo ""
 echo -e "${BOLD}Disk${NC}"
 if [ -d "$PROJECT_DIR" ]; then
-    echo "  ~/.HAN:  $(du -sh "$PROJECT_DIR" 2>/dev/null | cut -f1)"
+    echo "  ~/.foxterm:  $(du -sh "$PROJECT_DIR" 2>/dev/null | cut -f1)"
 fi
 if [ -d "$HOME/.openclaw" ]; then
     echo "  ~/.openclaw:          $(du -sh "$HOME/.openclaw" 2>/dev/null | cut -f1)"

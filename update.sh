@@ -10,7 +10,7 @@ NC='\033[0m'
 
 REPO_BASE_ORIGIN="https://raw.githubusercontent.com/HANPU5838/HAN/main"
 REPO_BASE="$REPO_BASE_ORIGIN"
-LOGFILE="$HOME/.HAN/update.log"
+LOGFILE="$HOME/.foxterm/update.log"
 
 # Ensure curl is available
 if ! command -v curl &>/dev/null; then
@@ -39,7 +39,7 @@ resolve_repo_base() {
 resolve_repo_base
 
 # Prepare log directory
-mkdir -p "$HOME/.HAN"
+mkdir -p "$HOME/.foxterm"
 
 # Download update-core.sh
 TMPFILE=$(mktemp "${PREFIX:-/tmp}/tmp/update-core.XXXXXX.sh" 2>/dev/null) || TMPFILE=$(mktemp /tmp/update-core.XXXXXX.sh)

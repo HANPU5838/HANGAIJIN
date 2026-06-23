@@ -15,7 +15,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-OPENCLAW_DIR="$HOME/.HAN"
+OPENCLAW_DIR="$HOME/.foxterm"
 GLIBC_LDSO="$PREFIX/glibc/lib/ld-linux-aarch64.so.1"
 PACMAN_CONF="$PREFIX/etc/pacman.conf"
 
