@@ -6,7 +6,7 @@ Thanks for your interest in contributing! This guide will help you get started.
 
 Welcome — contributions of all sizes are valued. If this is your first contribution:
 
-1. **Find an issue.** Look for issues labeled [`good first issue`](https://github.com/HANPU5838/HAN/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) — these are scoped for newcomers.
+1. **Find an issue.** Look for issues labeled [`good first issue`](https://github.com/HANPU5838/HANGAIJIN/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) — these are scoped for newcomers.
 
 2. **Pick a scope.** Good first contributions include:
    - Typo and documentation fixes
@@ -21,7 +21,7 @@ Welcome — contributions of all sizes are valued. If this is your first contrib
 
 ```bash
 # Clone the repo
-git clone https://github.com/HANPU5838/HAN.git
+git clone https://github.com/HANPU5838/HANGAIJIN.git
 cd HAN
 
 # Validate shell scripts

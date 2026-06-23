@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_DIR="$HOME/.foxterm"
+PROJECT_DIR="$HOME/.hangaijin"
 
-if [ -f "$HOME/.foxterm/scripts/lib.sh" ]; then
+if [ -f "$HOME/.hangaijin/scripts/lib.sh" ]; then
     # shellcheck source=/dev/null
-    source "$HOME/.foxterm/scripts/lib.sh"
+    source "$HOME/.hangaijin/scripts/lib.sh"
 else
     GREEN='\033[0;32m'
     YELLOW='\033[1;33m'
@@ -132,7 +132,7 @@ fi
 step 7 "installation directory"
 
 if [ -d "$PROJECT_DIR" ]; then
-    if ask_yn "Remove installation directory (~/.foxterm)? Includes Node.js, patches, configs."; then
+    if ask_yn "Remove installation directory (~/.hangaijin)? Includes Node.js, patches, configs."; then
         rm -rf "$PROJECT_DIR"
         echo -e "${GREEN}[OK]${NC}   Removed $PROJECT_DIR"
     else

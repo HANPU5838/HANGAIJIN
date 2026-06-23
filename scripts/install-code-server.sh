@@ -150,8 +150,8 @@ ARGON2_STUB=""
 # Check multiple possible locations for the stub
 if [ -f "$SCRIPT_DIR/../patches/argon2-stub.js" ]; then
     ARGON2_STUB="$SCRIPT_DIR/../patches/argon2-stub.js"
-elif [ -f "$HOME/.foxterm/patches/argon2-stub.js" ]; then
-    ARGON2_STUB="$HOME/.foxterm/patches/argon2-stub.js"
+elif [ -f "$HOME/.hangaijin/patches/argon2-stub.js" ]; then
+    ARGON2_STUB="$HOME/.hangaijin/patches/argon2-stub.js"
 fi
 
 if [ -n "$ARGON2_STUB" ]; then

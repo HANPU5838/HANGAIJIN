@@ -6,7 +6,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LOG_FILE="$HOME/.foxterm/patch.log"
+LOG_FILE="$HOME/.hangaijin/patch.log"
 
 echo "=== Applying OpenClaw Patches ==="
 echo ""

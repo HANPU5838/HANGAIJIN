@@ -14,7 +14,7 @@
 ## 快速开始
 
 ```bash
-curl -sL https://raw.githubusercontent.com/HANPU5838/HAN/main/bootstrap.sh | bash
+curl -sL https://raw.githubusercontent.com/HANPU5838/HANGAIJIN/main/bootstrap.sh | bash
 ```
 
 ## 功能特点

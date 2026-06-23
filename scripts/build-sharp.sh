@@ -94,9 +94,9 @@ echo -e "${GREEN}[OK]${NC}   node-gyp installed"
 # Set build environment variables
 # On glibc architecture, these are handled by glibc's standard headers.
 # On Bionic (legacy), we need explicit compatibility flags.
-if [ ! -f "$HOME/.foxterm/.glibc-arch" ]; then
+if [ ! -f "$HOME/.hangaijin/.glibc-arch" ]; then
     export CFLAGS="-Wno-error=implicit-function-declaration"
-    export CXXFLAGS="-include $HOME/.foxterm/patches/termux-compat.h"
+    export CXXFLAGS="-include $HOME/.hangaijin/patches/termux-compat.h"
     export GYP_DEFINES="OS=linux android_ndk_path=$PREFIX"
 fi
 export CPATH="$PREFIX/include/glib-2.0:$PREFIX/lib/glib-2.0/include"
@@ -112,5 +112,5 @@ else
     echo ""
     echo -e "${YELLOW}[WARN]${NC} sharp could not be enabled (non-critical)"
     echo "       Image processing will not be available, but OpenClaw will work normally."
-    echo "       You can retry later: bash ~/.foxterm/scripts/build-sharp.sh"
+    echo "       You can retry later: bash ~/.hangaijin/scripts/build-sharp.sh"
 fi

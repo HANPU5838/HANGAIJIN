@@ -19,7 +19,7 @@ set -eo pipefail
 : "${HOME:?HOME not set}"
 : "${TMPDIR:=$(dirname "$PREFIX")/tmp}"
 
-OCA_DIR="$HOME/.foxterm"
+OCA_DIR="$HOME/.hangaijin"
 NODE_DIR="$OCA_DIR/node"
 BIN_DIR="$OCA_DIR/bin"
 NODE_VERSION="22.22.0"
@@ -32,7 +32,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 # ─── GitHub mirror fallback (for China/restricted networks) ──
-REPO_BASE_ORIGIN="https://raw.githubusercontent.com/HANPU5838/HAN/main"
+REPO_BASE_ORIGIN="https://raw.githubusercontent.com/HANPU5838/HANGAIJIN/main"
 REPO_BASE="$REPO_BASE_ORIGIN"
 resolve_repo_base() {
     if curl -sI --connect-timeout 3 "$REPO_BASE_ORIGIN/oa.sh" >/dev/null 2>&1; then
@@ -362,7 +362,7 @@ else
 [ -n "\$LD_PRELOAD" ] && export _OA_ORIG_LD_PRELOAD="\$LD_PRELOAD"
 unset LD_PRELOAD
 export _OA_WRAPPER_PATH="$BIN_DIR/node"
-_OA_COMPAT="\$HOME/.foxterm/patches/glibc-compat.js"
+_OA_COMPAT="\$HOME/.hangaijin/patches/glibc-compat.js"
 if [ -f "\$_OA_COMPAT" ]; then
     case "\${NODE_OPTIONS:-}" in
         *"\$_OA_COMPAT"*) ;;
@@ -606,8 +606,8 @@ export GIT_TEMPLATE_DIR="$PREFIX/share/git-core/templates"
 export CLAWDHUB_WORKDIR="$HOME/.openclaw/workspace"
 export CPATH="$PREFIX/include/glib-2.0:$PREFIX/lib/glib-2.0/include"
 # npm registry (auto-detected by OpenClaw Android, safe to override manually)
-[ -z "\${NPM_CONFIG_REGISTRY:-}" ] && [ -s "\$HOME/.foxterm/.npm-registry" ] && \\
-    export NPM_CONFIG_REGISTRY="\$(cat "\$HOME/.foxterm/.npm-registry")"
+[ -z "\${NPM_CONFIG_REGISTRY:-}" ] && [ -s "\$HOME/.hangaijin/.npm-registry" ] && \\
+    export NPM_CONFIG_REGISTRY="\$(cat "\$HOME/.hangaijin/.npm-registry")"
 BASHRC
 
 echo -e "  ${GREEN}✓${NC} ~/.bashrc configured"

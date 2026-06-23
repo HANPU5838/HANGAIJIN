@@ -12,7 +12,7 @@
 
 Instead, please report them responsibly:
 
-1. **GitHub**: Use [GitHub Security Advisories](https://github.com/HANPU5838/HAN/security/advisories/new)
+1. **GitHub**: Use [GitHub Security Advisories](https://github.com/HANPU5838/HANGAIJIN/security/advisories/new)
 
 ### What to Include
 
@@ -64,5 +64,5 @@ OpenClaw on Android runs standard Linux binaries on Android without proot-distro
 
 - Vulnerabilities in OpenClaw core (report to [OpenClaw upstream](https://github.com/openclaw/openclaw))
 - Vulnerabilities in Termux (report to [Termux](https://github.com/termux/termux-app))
-- Vulnerabilities in glibc-runner (report to [termux-pacman](https://github.com/HANPU5838/HAN))
+- Vulnerabilities in glibc-runner (report to [termux-pacman](https://github.com/HANPU5838/HANGAIJIN))
 - Device-level security (rooted devices, unlocked bootloaders)

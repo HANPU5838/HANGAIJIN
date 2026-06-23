@@ -64,7 +64,7 @@ export function SettingsAbout() {
                   color: '#10b981', border: '1px solid #10b981',
                   borderRadius: 4, padding: '1px 6px', cursor: 'pointer'
                 }}
-                onClick={() => bridge.call('openUrl', 'https://github.com/HANPU5838/HAN/releases/latest')}
+                onClick={() => bridge.call('openUrl', 'https://github.com/HANPU5838/HANGAIJIN/releases/latest')}
               >{t('about_update_available')}</span>
             )}
           </span>

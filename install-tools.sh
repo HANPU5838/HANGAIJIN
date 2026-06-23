@@ -13,10 +13,10 @@ YELLOW='\033[1;33m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-PROJECT_DIR="$HOME/.foxterm"
+PROJECT_DIR="$HOME/.hangaijin"
 PLATFORM_MARKER="$PROJECT_DIR/.platform"
 FOXTERM_VERSION="1.0.0"
-REPO_TARBALL="https://github.com/HANPU5838/HAN/archive/refs/heads/main.tar.gz"
+REPO_TARBALL="https://github.com/HANPU5838/HANGAIJIN/archive/refs/heads/main.tar.gz"
 
 echo ""
 echo -e "${BOLD}========================================${NC}"

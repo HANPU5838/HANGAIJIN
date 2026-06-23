@@ -144,7 +144,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 if [ -f "$SCRIPT_DIR/build-sharp.sh" ]; then
     echo ""
     bash "$SCRIPT_DIR/build-sharp.sh" || true
-elif [ -f "$HOME/.foxterm/scripts/build-sharp.sh" ]; then
+elif [ -f "$HOME/.hangaijin/scripts/build-sharp.sh" ]; then
     echo ""
-    bash "$HOME/.foxterm/scripts/build-sharp.sh" || true
+    bash "$HOME/.hangaijin/scripts/build-sharp.sh" || true
 fi

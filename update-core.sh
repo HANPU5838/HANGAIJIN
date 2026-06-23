@@ -7,7 +7,7 @@ YELLOW='\033[1;33m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-PROJECT_DIR="$HOME/.foxterm"
+PROJECT_DIR="$HOME/.hangaijin"
 PLATFORM_MARKER="$PROJECT_DIR/.platform"
 FOXTERM_VERSION="1.0.27"
 
@@ -54,7 +54,7 @@ fi
 command -v resolve_npm_registry >/dev/null 2>&1 && resolve_npm_registry || true
 
 # Define REPO_TARBALL after sourcing lib.sh to prevent old installs from overwriting it
-REPO_TARBALL="https://github.com/HANPU5838/HAN/archive/refs/heads/main.tar.gz"
+REPO_TARBALL="https://github.com/HANPU5838/HANGAIJIN/archive/refs/heads/main.tar.gz"
 
 if ! declare -f detect_platform &>/dev/null; then
     detect_platform() {
@@ -94,7 +94,7 @@ fi
 SDK_INT=$(getprop ro.build.version.sdk 2>/dev/null || echo "0")
 if [ "$SDK_INT" -ge 31 ] 2>/dev/null; then
     echo -e "${YELLOW}[INFO]${NC} Android 12+ detected — if background processes get killed (signal 9),"
-    echo "       see: https://github.com/HANPU5838/HAN/blob/main/docs/disable-phantom-process-killer.md"
+    echo "       see: https://github.com/HANPU5838/HANGAIJIN/blob/main/docs/disable-phantom-process-killer.md"
 fi
 
 step 2 "Download Latest Release (tarball)"

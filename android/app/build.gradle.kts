@@ -34,12 +34,12 @@ android {
         buildConfigField(
             "String",
             "WWW_URL",
-            "\"https://github.com/HANPU5838/HAN-app/releases/download/v1.0.0/www.zip\"",
+            "\"https://github.com/HANPU5838/HANGAIJIN-app/releases/download/v1.0.0/www.zip\"",
         )
         buildConfigField(
             "String",
             "CONFIG_URL",
-            "\"https://raw.githubusercontent.com/HANPU5838/HAN-app/main/config.json\"",
+            "\"https://raw.githubusercontent.com/HANPU5838/HANGAIJIN-app/main/config.json\"",
         )
     }
 

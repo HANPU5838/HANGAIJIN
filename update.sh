@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # update.sh - Thin wrapper that downloads and runs update-core.sh
-# Usage: curl -sL https://raw.githubusercontent.com/HANPU5838/HAN/main/update.sh | bash
+# Usage: curl -sL https://raw.githubusercontent.com/HANPU5838/HANGAIJIN/main/update.sh | bash
 #   or:  oaupdate  (after initial install)
 set -euo pipefail
 
@@ -8,9 +8,9 @@ RED='\033[0;31m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-REPO_BASE_ORIGIN="https://raw.githubusercontent.com/HANPU5838/HAN/main"
+REPO_BASE_ORIGIN="https://raw.githubusercontent.com/HANPU5838/HANGAIJIN/main"
 REPO_BASE="$REPO_BASE_ORIGIN"
-LOGFILE="$HOME/.foxterm/update.log"
+LOGFILE="$HOME/.hangaijin/update.log"
 
 # Ensure curl is available
 if ! command -v curl &>/dev/null; then
@@ -39,7 +39,7 @@ resolve_repo_base() {
 resolve_repo_base
 
 # Prepare log directory
-mkdir -p "$HOME/.foxterm"
+mkdir -p "$HOME/.hangaijin"
 
 # Download update-core.sh
 TMPFILE=$(mktemp "${PREFIX:-/tmp}/tmp/update-core.XXXXXX.sh" 2>/dev/null) || TMPFILE=$(mktemp /tmp/update-core.XXXXXX.sh)

@@ -119,14 +119,14 @@ Or fully close and reopen the Termux app.
 ## "Cannot find module glibc-compat.js" error
 
 ```
-Error: Cannot find module '/data/data/com.termux/files/home/.foxterm/patches/glibc-compat.js'
+Error: Cannot find module '/data/data/com.termux/files/home/.hangaijin/patches/glibc-compat.js'
 ```
 
 > **Note**: This issue only affects pre-1.0.0 (Bionic) installations. In v1.0.0+ (glibc), `glibc-compat.js` is loaded by the node wrapper script, not `NODE_OPTIONS`.
 
 ### Cause
 
-The `NODE_OPTIONS` environment variable in `~/.bashrc` still references the old installation path (`.foxterm`). This happens when updating from an older version where the project was named "OpenClaw Lite".
+The `NODE_OPTIONS` environment variable in `~/.bashrc` still references the old installation path (`.hangaijin`). This happens when updating from an older version where the project was named "OpenClaw Lite".
 
 ### Solution
 
@@ -139,7 +139,7 @@ oa --update && source ~/.bashrc
 Or manually fix it:
 
 ```bash
-sed -i 's/\.foxterm/\.foxterm/g' ~/.bashrc && source ~/.bashrc
+sed -i 's/\.hangaijin/\.hangaijin/g' ~/.bashrc && source ~/.bashrc
 ```
 
 ## "systemctl --user unavailable: spawn systemctl ENOENT" during update
@@ -189,7 +189,7 @@ Reason: global update
 After the update, manually rebuild `sharp` using the provided script:
 
 ```bash
-bash ~/.foxterm/scripts/build-sharp.sh
+bash ~/.hangaijin/scripts/build-sharp.sh
 ```
 
 Alternatively, use `oa --update` instead of `openclaw update` — it handles sharp automatically:

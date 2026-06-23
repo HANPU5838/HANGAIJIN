@@ -18,7 +18,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-OPENCLAW_DIR="$HOME/.foxterm"
+OPENCLAW_DIR="$HOME/.hangaijin"
 NODE_DIR="$OPENCLAW_DIR/node"
 BIN_DIR="$OPENCLAW_DIR/bin"
 GLIBC_LDSO="$PREFIX/glibc/lib/ld-linux-aarch64.so.1"
@@ -70,7 +70,7 @@ if [ -n "$_NODE_CMD" ]; then
 [ -n "\$LD_PRELOAD" ] && export _OA_ORIG_LD_PRELOAD="\$LD_PRELOAD"
 unset LD_PRELOAD
 export _OA_WRAPPER_PATH="$BIN_DIR/node"
-_OA_COMPAT="\$HOME/.foxterm/patches/glibc-compat.js"
+_OA_COMPAT="\$HOME/.hangaijin/patches/glibc-compat.js"
 if [ -f "\$_OA_COMPAT" ]; then
     case "\${NODE_OPTIONS:-}" in
         *"\$_OA_COMPAT"*) ;;
@@ -197,7 +197,7 @@ echo -e "${GREEN}[OK]${NC}   Extracted to $NODE_DIR"
 
 # ── Step 2: Create wrapper scripts ────────────
 #
-# Wrappers are placed in BIN_DIR (~/.foxterm/bin/), separate from
+# Wrappers are placed in BIN_DIR (~/.hangaijin/bin/), separate from
 # NODE_DIR/bin/ which npm manages. This prevents npm from overwriting our
 # wrappers when users run 'npm install -g npm' or similar commands.
 
@@ -221,7 +221,7 @@ cat > "$BIN_DIR/node" << WRAPPER
 [ -n "\$LD_PRELOAD" ] && export _OA_ORIG_LD_PRELOAD="\$LD_PRELOAD"
 unset LD_PRELOAD
 export _OA_WRAPPER_PATH="$BIN_DIR/node"
-_OA_COMPAT="\$HOME/.foxterm/patches/glibc-compat.js"
+_OA_COMPAT="\$HOME/.hangaijin/patches/glibc-compat.js"
 if [ -f "\$_OA_COMPAT" ]; then
     case "\${NODE_OPTIONS:-}" in
         *"\$_OA_COMPAT"*) ;;

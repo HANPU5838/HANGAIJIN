@@ -46,7 +46,7 @@ if [ "$OPENCODE_INSTALLED" = true ]; then
             pkill -f "ld.so.opencode" || true
             echo -e "${GREEN}[OK]${NC}   Stopped running OpenCode"
         fi
-        [ -f "$HOME/.foxterm/bin/ld.so.opencode" ] && rm -f "$HOME/.foxterm/bin/ld.so.opencode" && echo -e "${GREEN}[OK]${NC}   Removed ld.so.opencode"
+        [ -f "$HOME/.hangaijin/bin/ld.so.opencode" ] && rm -f "$HOME/.hangaijin/bin/ld.so.opencode" && echo -e "${GREEN}[OK]${NC}   Removed ld.so.opencode"
         # Clean up legacy tmp location
         [ -f "$PREFIX/tmp/ld.so.opencode" ] && rm -f "$PREFIX/tmp/ld.so.opencode"
         [ -f "$PREFIX/bin/opencode" ] && rm -f "$PREFIX/bin/opencode" && echo -e "${GREEN}[OK]${NC}   Removed opencode wrapper"

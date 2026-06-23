@@ -8,17 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Fixed
 
-- Fix `oa --update` showing syntax error after self-update — the running shell process continued reading the replaced `oa` script file, causing a parse error at the new file's line 240. Added `exit 0` after update completes to prevent this ([#110](https://github.com/HANPU5838/HAN/issues/110))
+- Fix `oa --update` showing syntax error after self-update — the running shell process continued reading the replaced `oa` script file, causing a parse error at the new file's line 240. Added `exit 0` after update completes to prevent this ([#110](https://github.com/HANPU5838/HANGAIJIN/issues/110))
 
 ## [Script v1.0.26] - 2026-04-12
 
 ### Changed
 
-- Switch Codex CLI from upstream `@openai/codex` to Termux-optimized `@mmmbuto/codex-cli-termux` (DioNanos/codex-termux fork). The upstream package ships a static musl binary whose DNS resolver hardcodes `/etc/resolv.conf` — a file that doesn't exist on Android — causing unreliable network connections. The fork builds as a dynamic Bionic binary that uses Android's native DNS stack, fixing the `Stream disconnected` / `error sending request` pattern reported by users behind proxies. CLI command name (`codex`) is unchanged. ([#108](https://github.com/HANPU5838/HAN/issues/108))
+- Switch Codex CLI from upstream `@openai/codex` to Termux-optimized `@mmmbuto/codex-cli-termux` (DioNanos/codex-termux fork). The upstream package ships a static musl binary whose DNS resolver hardcodes `/etc/resolv.conf` — a file that doesn't exist on Android — causing unreliable network connections. The fork builds as a dynamic Bionic binary that uses Android's native DNS stack, fixing the `Stream disconnected` / `error sending request` pattern reported by users behind proxies. CLI command name (`codex`) is unchanged. ([#108](https://github.com/HANPU5838/HANGAIJIN/issues/108))
 
 ### Fixed
 
-- Fix Codex CLI launcher failing on `com.openclaw.android` namespace — the npm-created `$PREFIX/bin/codex` symlink points to a JS launcher chain that miscalculates paths under the non-standard Android app namespace. Replace the symlink with a bash wrapper that sets `LD_LIBRARY_PATH` and directly exec's `codex.bin`, matching the pattern used for the openclaw CLI wrapper. Applied across all delivery paths (App Install, Termux Install, Update) via npm wrapper hook and inline post-install creation. ([#108](https://github.com/HANPU5838/HAN/issues/108))
+- Fix Codex CLI launcher failing on `com.openclaw.android` namespace — the npm-created `$PREFIX/bin/codex` symlink points to a JS launcher chain that miscalculates paths under the non-standard Android app namespace. Replace the symlink with a bash wrapper that sets `LD_LIBRARY_PATH` and directly exec's `codex.bin`, matching the pattern used for the openclaw CLI wrapper. Applied across all delivery paths (App Install, Termux Install, Update) via npm wrapper hook and inline post-install creation. ([#108](https://github.com/HANPU5838/HANGAIJIN/issues/108))
 
 ## [Script v1.0.25] - 2026-04-11
 
@@ -30,25 +30,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Fixed
 
-- Stop permanently polluting user's `~/.npmrc` during install — previously `post-setup.sh` would detect slow `registry.npmjs.org` access and write `registry=https://registry.npmmirror.com` to `~/.npmrc`, affecting all of the user's npm projects forever with no self-recovery. Now the installer uses session-scoped `NPM_CONFIG_REGISTRY` env var and caches the chosen registry at `~/.foxterm/.npm-registry`, re-exporting from `~/.bashrc` on each login. Users bitten by v1.0.22/v1.0.23 are auto-rescued on next `oa --update` because env vars override `~/.npmrc`, and their personal npmrc is left untouched (preserving auth tokens, scope registries, etc.) ([#107](https://github.com/HANPU5838/HAN/issues/107))
+- Stop permanently polluting user's `~/.npmrc` during install — previously `post-setup.sh` would detect slow `registry.npmjs.org` access and write `registry=https://registry.npmmirror.com` to `~/.npmrc`, affecting all of the user's npm projects forever with no self-recovery. Now the installer uses session-scoped `NPM_CONFIG_REGISTRY` env var and caches the chosen registry at `~/.hangaijin/.npm-registry`, re-exporting from `~/.bashrc` on each login. Users bitten by v1.0.22/v1.0.23 are auto-rescued on next `oa --update` because env vars override `~/.npmrc`, and their personal npmrc is left untouched (preserving auth tokens, scope registries, etc.) ([#107](https://github.com/HANPU5838/HANGAIJIN/issues/107))
 - Cover all three install paths for the npm registry detection — App Install (`post-setup.sh`), Termux Install (`install.sh`), and Update (`update-core.sh`). `scripts/setup-env.sh` now injects the `NPM_CONFIG_REGISTRY` re-export line inside the `# >>> OpenClaw on Android >>>` marker block of `~/.bashrc` so Termux-install and update paths get the same session-to-session re-evaluation as App Install.
 
 ## [Script v1.0.23] - 2026-04-11
 
 ### Fixed
 
-- Preserve user's existing `~/.gitconfig` during post-setup — previously `cat > ~/.gitconfig` overwrote all user settings (name, email, aliases). Now uses `git config --global` to set only `http.sslCAInfo` and `url.https://github.com/.insteadOf` keys while keeping user entries intact ([#107](https://github.com/HANPU5838/HAN/issues/107))
+- Preserve user's existing `~/.gitconfig` during post-setup — previously `cat > ~/.gitconfig` overwrote all user settings (name, email, aliases). Now uses `git config --global` to set only `http.sslCAInfo` and `url.https://github.com/.insteadOf` keys while keeping user entries intact ([#107](https://github.com/HANPU5838/HANGAIJIN/issues/107))
 
 ## [Script v1.0.22] - 2026-04-10
 
 ### Added
 
-- ELF binary auto-wrapping: detect glibc binaries via PT_INTERP and route through ld.so, enabling npx-installed native binaries like codex-acp to run on Android ([#103](https://github.com/HANPU5838/HAN/issues/103))
+- ELF binary auto-wrapping: detect glibc binaries via PT_INTERP and route through ld.so, enabling npx-installed native binaries like codex-acp to run on Android ([#103](https://github.com/HANPU5838/HANGAIJIN/issues/103))
 - Shebang resolution: handle `#!/usr/bin/env` scripts without libtermux-exec.so by resolving interpreters from PATH in JavaScript
 - Shell invocation interception: detect `spawn('sh', ['-c', 'cmd'])` pattern used by npm/npx and resolve commands directly
 - Supplementary glibc library deployment: bundle libcap.so.2 for third-party native binary support
-- Localhost DNS shortcut: return 127.0.0.1 immediately for localhost lookups without querying external DNS ([#105](https://github.com/HANPU5838/HAN/issues/105))
-- Create `$PREFIX/glibc/etc/hosts` if missing, ensuring getaddrinfo can resolve localhost ([#105](https://github.com/HANPU5838/HAN/issues/105))
+- Localhost DNS shortcut: return 127.0.0.1 immediately for localhost lookups without querying external DNS ([#105](https://github.com/HANPU5838/HANGAIJIN/issues/105))
+- Create `$PREFIX/glibc/etc/hosts` if missing, ensuring getaddrinfo can resolve localhost ([#105](https://github.com/HANPU5838/HANGAIJIN/issues/105))
 
 ### Changed
 
@@ -66,38 +66,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Fixed
 
-- Fix dep restore blocked by sharp build failure — `npm install` inside openclaw dir triggers sharp's native build which fails on Termux, blocking all other deps. Now runs `postinstall-bundled-plugins.mjs` directly with `npm_config_ignore_scripts=true` to skip sharp while installing channel deps ([#92](https://github.com/HANPU5838/HAN/issues/92))
+- Fix dep restore blocked by sharp build failure — `npm install` inside openclaw dir triggers sharp's native build which fails on Termux, blocking all other deps. Now runs `postinstall-bundled-plugins.mjs` directly with `npm_config_ignore_scripts=true` to skip sharp while installing channel deps ([#92](https://github.com/HANPU5838/HANGAIJIN/issues/92))
 - Fix dep restore skipped when openclaw already at latest version — check `@buape/carbon` presence instead of `OPENCLAW_UPDATED` flag
 
 ## [Script v1.0.19] - 2026-04-06
 
 ### Fixed
 
-- Fix missing channel dependencies after `--ignore-scripts` install — reinstall deps inside openclaw package dir to restore optional modules like `@buape/carbon`, `grammy` ([#92](https://github.com/HANPU5838/HAN/issues/92))
+- Fix missing channel dependencies after `--ignore-scripts` install — reinstall deps inside openclaw package dir to restore optional modules like `@buape/carbon`, `grammy` ([#92](https://github.com/HANPU5838/HANGAIJIN/issues/92))
 
 ## [Script v1.0.18] - 2026-04-04
 
 ### Fixed
 
-- Fix `process.execPath` pointing to `ld-linux-aarch64.so.1` instead of node wrapper — glibc-compat.js had wrong path (`node/bin/node` instead of `bin/node`), causing OpenClaw 4.2 child process spawns with `--disable-warning=ExperimentalWarning` to fail ([#88](https://github.com/HANPU5838/HAN/issues/88))
+- Fix `process.execPath` pointing to `ld-linux-aarch64.so.1` instead of node wrapper — glibc-compat.js had wrong path (`node/bin/node` instead of `bin/node`), causing OpenClaw 4.2 child process spawns with `--disable-warning=ExperimentalWarning` to fail ([#88](https://github.com/HANPU5838/HANGAIJIN/issues/88))
 - Add `_OA_WRAPPER_PATH` env var to node wrapper — eliminates path guessing in glibc-compat.js
 - Fix verify-compat.sh checking wrong wrapper paths — tests now verify behavior (executable script, not ELF) instead of hardcoded paths
 - Fix `install.sh` session PATH missing `$BIN_DIR` — node/npm commands could fail to resolve after Step 5
 - Fix README (en/ko/zh) documenting wrong wrapper path (`node/bin/node` → `bin/node`)
-- Fix npm wrapper writing through symlink and corrupting `openclaw.mjs` — npm creates symlink `$PREFIX/bin/openclaw` → `openclaw.mjs`, our shim writer followed it and destroyed the original file ([#89](https://github.com/HANPU5838/HAN/issues/89))
+- Fix npm wrapper writing through symlink and corrupting `openclaw.mjs` — npm creates symlink `$PREFIX/bin/openclaw` → `openclaw.mjs`, our shim writer followed it and destroyed the original file ([#89](https://github.com/HANPU5838/HANGAIJIN/issues/89))
 
 ## [Script v1.0.17] - 2026-04-03
 
 ### Fixed
 
-- Fix false-positive "glibc node wrapper not found" in install verification — verify-install.sh and status.sh referenced old `node/bin/` path instead of new `bin/` path ([#87](https://github.com/HANPU5838/HAN/issues/87))
+- Fix false-positive "glibc node wrapper not found" in install verification — verify-install.sh and status.sh referenced old `node/bin/` path instead of new `bin/` path ([#87](https://github.com/HANPU5838/HANGAIJIN/issues/87))
 - Add `BIN_DIR` constant to lib.sh to prevent path hardcoding drift across verification scripts
 
 ## [Script v1.0.16] - 2026-04-02
 
 ### Fixed
 
-- Auto-repatch openclaw CLI wrapper after `npm install/update -g openclaw` — prevents `/usr/bin/env` shebang breakage on Termux ([#86](https://github.com/HANPU5838/HAN/issues/86))
+- Auto-repatch openclaw CLI wrapper after `npm install/update -g openclaw` — prevents `/usr/bin/env` shebang breakage on Termux ([#86](https://github.com/HANPU5838/HANGAIJIN/issues/86))
 - Move node/npm/npx wrappers to dedicated `bin/` directory safe from npm overwrites
 - Fix missing `bin/node` wrapper creation in already-installed repair path
 
@@ -105,13 +105,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Fixed
 
-- Fix `dns.promises.lookup` not patched in glibc-compat.js — OpenClaw's web_search SSRF guard uses `node:dns/promises` which bypassed the c-ares DNS fix, causing `getaddrinfo EAI_AGAIN` on hosts without `resolv.conf` ([#83](https://github.com/HANPU5838/HAN/issues/83))
+- Fix `dns.promises.lookup` not patched in glibc-compat.js — OpenClaw's web_search SSRF guard uses `node:dns/promises` which bypassed the c-ares DNS fix, causing `getaddrinfo EAI_AGAIN` on hosts without `resolv.conf` ([#83](https://github.com/HANPU5838/HANGAIJIN/issues/83))
 
 ## [Script v1.0.14] - 2026-04-01
 
 ### Fixed
 
-- Auto-disable Bonjour/mDNS at runtime when only loopback interface is visible — Android/Termux cannot send multicast, causing repeated "Announcement failed as of socket errors!" gateway logs ([#84](https://github.com/HANPU5838/HAN/issues/84))
+- Auto-disable Bonjour/mDNS at runtime when only loopback interface is visible — Android/Termux cannot send multicast, causing repeated "Announcement failed as of socket errors!" gateway logs ([#84](https://github.com/HANPU5838/HANGAIJIN/issues/84))
 
 ## [Script v1.0.13] - 2026-03-31
 

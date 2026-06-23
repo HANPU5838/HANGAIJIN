@@ -52,7 +52,7 @@ fi
 SDK_INT=$(getprop ro.build.version.sdk 2>/dev/null || echo "0")
 if [ "$SDK_INT" -ge 31 ] 2>/dev/null; then
     echo -e "${YELLOW}[INFO]${NC} 检测到 Android 12+ — 如果后台进程被杀死 (signal 9),"
-    echo "       see: https://github.com/HANPU5838/HAN/blob/main/docs/disable-phantom-process-killer.md"
+    echo "       see: https://github.com/HANPU5838/HANGAIJIN/blob/main/docs/disable-phantom-process-killer.md"
 fi
 
 echo ""

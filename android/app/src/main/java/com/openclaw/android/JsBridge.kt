@@ -350,7 +350,7 @@ class JsBridge(
                     // OpenCode (Bun-based) — requires proot + ld.so concatenation
                     "opencode" ->
                         "curl -fsSL https://raw.githubusercontent.com/" +
-                            "HANPU5838/HAN/main/scripts/install-opencode.sh | bash"
+                            "HANPU5838/HANGAIJIN/main/scripts/install-opencode.sh | bash"
                     else -> "echo 'Unknown tool: $id'"
                 }
             eventBridge.emit(
@@ -507,7 +507,7 @@ class JsBridge(
     @JavascriptInterface
     fun getApkUpdateInfo(): String {
         return try {
-            val url = java.net.URL("https://api.github.com/repos/HANPU5838/HAN/releases/latest")
+            val url = java.net.URL("https://api.github.com/repos/HANPU5838/HANGAIJIN/releases/latest")
             val conn = url.openConnection() as java.net.HttpURLConnection
             conn.connectTimeout = API_TIMEOUT_MS
             conn.readTimeout = API_TIMEOUT_MS

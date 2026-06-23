@@ -10,14 +10,14 @@ BOLD='\033[1m'
 NC='\033[0m'
 
 # ── 项目常量 ──
-PROJECT_DIR="$HOME/.foxterm"
+PROJECT_DIR="$HOME/.hangaijin"
 BIN_DIR="$PROJECT_DIR/bin"
 PLATFORM_MARKER="$PROJECT_DIR/.platform"
-REPO_BASE_ORIGIN="https://raw.githubusercontent.com/HANPU5838/HAN/main"
+REPO_BASE_ORIGIN="https://raw.githubusercontent.com/HANPU5838/HANGAIJIN/main"
 REPO_BASE_MIRRORS=(
-    "https://ghfast.top/https://raw.githubusercontent.com/HANPU5838/HAN/main"
-    "https://ghproxy.net/https://raw.githubusercontent.com/HANPU5838/HAN/main"
-    "https://mirror.ghproxy.com/https://raw.githubusercontent.com/HANPU5838/HAN/main"
+    "https://ghfast.top/https://raw.githubusercontent.com/HANPU5838/HANGAIJIN/main"
+    "https://ghproxy.net/https://raw.githubusercontent.com/HANPU5838/HANGAIJIN/main"
+    "https://mirror.ghproxy.com/https://raw.githubusercontent.com/HANPU5838/HANGAIJIN/main"
 )
 NPM_REGISTRY_ORIGIN="https://registry.npmjs.org/"
 NPM_REGISTRY_MIRROR="https://registry.npmmirror.com/"
