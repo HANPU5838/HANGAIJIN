@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
-# lib.sh — Shared function library for all orchestrators
-# Usage: source "$SCRIPT_DIR/scripts/lib.sh"  (from repo)
-#        source "$PROJECT_DIR/scripts/lib.sh"  (from installed copy)
+# lib.sh — 共享函数库
+# 用法: source "$SCRIPT_DIR/scripts/lib.sh"
 
-# ── Color constants ──
+# ── 颜色常量 ──
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-# ── Project constants ──
-PROJECT_DIR="$HOME/.HAN"
+# ── 项目常量 ──
+PROJECT_DIR="$HOME/.foxterm"
 BIN_DIR="$PROJECT_DIR/bin"
 PLATFORM_MARKER="$PROJECT_DIR/.platform"
 REPO_BASE_ORIGIN="https://raw.githubusercontent.com/HANPU5838/HAN/main"
@@ -24,7 +23,7 @@ NPM_REGISTRY_ORIGIN="https://registry.npmjs.org/"
 NPM_REGISTRY_MIRROR="https://registry.npmmirror.com/"
 NPM_REGISTRY_CACHE="$PROJECT_DIR/.npm-registry"
 
-# Detect reachable REPO_BASE (origin first, then mirrors)
+# 检测可达的仓库地址（优先源地址，然后镜像）
 resolve_repo_base() {
     if curl -sI --connect-timeout 3 "$REPO_BASE_ORIGIN/oa.sh" >/dev/null 2>&1; then
         REPO_BASE="$REPO_BASE_ORIGIN"
@@ -32,17 +31,16 @@ resolve_repo_base() {
     fi
     for mirror in "${REPO_BASE_MIRRORS[@]}"; do
         if curl -sI --connect-timeout 3 "$mirror/oa.sh" >/dev/null 2>&1; then
-            echo -e "  ${YELLOW}[MIRROR]${NC} Using mirror: ${mirror%%/oa.sh*}"
+            echo -e "  ${YELLOW}[镜像]${NC} 使用镜像: ${mirror%%/oa.sh*}"
             REPO_BASE="$mirror"
             return 0
         fi
     done
-    # Fallback to origin even if unreachable
     REPO_BASE="$REPO_BASE_ORIGIN"
     return 1
 }
 
-# Detect reachable npm registry and export NPM_CONFIG_REGISTRY (origin first, then mirror)
+# 检测可达的 npm 源
 resolve_npm_registry() {
     local choice
     local cache_file="$NPM_REGISTRY_CACHE"
@@ -51,7 +49,7 @@ resolve_npm_registry() {
         choice="$NPM_REGISTRY_ORIGIN"
         reachable=1
     elif curl -sI --connect-timeout 5 "$NPM_REGISTRY_MIRROR" >/dev/null 2>&1; then
-        echo -e "  ${YELLOW}[MIRROR]${NC} Using npm mirror: ${NPM_REGISTRY_MIRROR}"
+        echo -e "  ${YELLOW}[镜像]${NC} 使用 npm 镜像: ${NPM_REGISTRY_MIRROR}"
         choice="$NPM_REGISTRY_MIRROR"
         reachable=1
     else
@@ -60,14 +58,10 @@ resolve_npm_registry() {
     mkdir -p "$(dirname "$cache_file")"
     printf '%s' "$choice" > "$cache_file.tmp" && mv "$cache_file.tmp" "$cache_file"
     export NPM_CONFIG_REGISTRY="$choice"
-    if [ "$reachable" -eq 1 ]; then
-        return 0
-    fi
-    return 1
+    [ "$reachable" -eq 1 ] && return 0 || return 1
 }
 
-# Fix shebangs in npm globally-installed CLI entry points
-# Rewrites #!/usr/bin/env node → #!$BIN_DIR/node so CLIs work on Android
+# 修复 npm 全局安装的 shebang
 fix_npm_global_shebangs() {
     local _js
     for _js in "$PREFIX/lib/node_modules"/*/bin/*.js \
@@ -78,17 +72,12 @@ fix_npm_global_shebangs() {
     done
 }
 
-# Initialize REPO_BASE
 REPO_BASE="$REPO_BASE_ORIGIN"
+BASHRC_MARKER_START="# >>> FoxTerm >>>"
+BASHRC_MARKER_END="# <<< FoxTerm <<<"
+FOXTERM_VERSION="1.0.0"
 
-BASHRC_MARKER_START="# >>> OpenClaw on Android >>>"
-BASHRC_MARKER_END="# <<< OpenClaw on Android <<<"
-OA_VERSION="1.0.27"
-
-# ── Platform detection ──
-# 1. Explicit marker file (new install and after first update)
-# 2. Legacy detection (v1.0.2 and below, one-time)
-# 3. Detection failure
+# ── 平台检测 ──
 detect_platform() {
     if [ -f "$PLATFORM_MARKER" ]; then
         cat "$PLATFORM_MARKER"
@@ -104,23 +93,21 @@ detect_platform() {
     return 1
 }
 
-# ── Platform name validation ──
+# ── 平台名称校验 ──
 validate_platform_name() {
     local name="$1"
     if [ -z "$name" ]; then
-        echo -e "${RED}[FAIL]${NC} Platform name is empty"
+        echo -e "${RED}[失败]${NC} 平台名称为空"
         return 1
     fi
-    # Only lowercase alphanumeric + hyphens/underscores allowed
     if [[ ! "$name" =~ ^[a-z0-9][a-z0-9_-]*$ ]]; then
-        echo -e "${RED}[FAIL]${NC} Invalid platform name: $name"
+        echo -e "${RED}[失败]${NC} 平台名称格式无效: $name"
         return 1
     fi
     return 0
 }
 
-# ── User confirmation prompt ──
-# Reads from /dev/tty so it works even in curl|bash mode.
+# ── 用户确认 ──
 ask_yn() {
     local prompt="$1"
     local reply
@@ -133,8 +120,8 @@ ask_yn() {
     return 0
 }
 
-# ── Load platform config.env ──
-# $1: platform name, $2: base directory (parent of platforms/)
+# ── 加载平台配置 ──
+# $1: 平台名称, $2: 基础目录
 load_platform_config() {
     local platform="$1"
     local base_dir="$2"
@@ -143,10 +130,9 @@ load_platform_config() {
     validate_platform_name "$platform" || return 1
 
     if [ ! -f "$config_path" ]; then
-        echo -e "${RED}[FAIL]${NC} Platform config not found: $config_path"
+        echo -e "${RED}[失败]${NC} 找不到平台配置: $config_path"
         return 1
     fi
-    # shellcheck source=/dev/null
     source "$config_path"
     return 0
 }
