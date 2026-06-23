@@ -13,7 +13,7 @@ FOXTERM_VERSION="1.0.27"
 
 echo ""
 echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  FoxTerm - 更新程序 v${FOXTERM_VERSION}${NC}"
+echo -e "${BOLD}  HANGAIJIN - 更新程序 v${FOXTERM_VERSION}${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
 
