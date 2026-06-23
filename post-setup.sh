@@ -605,7 +605,7 @@ export GIT_EXEC_PATH="$PREFIX/libexec/git-core"
 export GIT_TEMPLATE_DIR="$PREFIX/share/git-core/templates"
 export CLAWDHUB_WORKDIR="$HOME/.openclaw/workspace"
 export CPATH="$PREFIX/include/glib-2.0:$PREFIX/lib/glib-2.0/include"
-# npm registry (auto-detected by FoxTerm, safe to override manually)
+# npm registry (auto-detected by HANGAIJIN, safe to override manually)
 [ -z "\${NPM_CONFIG_REGISTRY:-}" ] && [ -s "\$HOME/.hangaijin/.npm-registry" ] && \\
     export NPM_CONFIG_REGISTRY="\$(cat "\$HOME/.hangaijin/.npm-registry")"
 BASHRC
