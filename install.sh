@@ -6,7 +6,7 @@ source "$SCRIPT_DIR/scripts/lib.sh"
 
 echo ""
 echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  OpenClaw on Android - Installer v${FOXTERM_VERSION}${NC}"
+echo -e "${BOLD}  OpenClaw on Android - Installer v1.0.0${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
 echo "This script installs OpenClaw on Termux with platform-aware architecture."

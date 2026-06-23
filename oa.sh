@@ -11,7 +11,7 @@ if [ -f "$HOME/.HAN/scripts/lib.sh" ]; then
         source "$HOME/.HAN/scripts/backup.sh"
     fi
 else
-    OA_VERSION="1.0.27"
+    FOXTERM_VERSION="1.0.0"
     RED='\033[0;31m'
     GREEN='\033[0;32m'
     YELLOW='\033[1;33m'
@@ -50,7 +50,7 @@ fi
 
 show_help() {
     echo ""
-    echo -e "${BOLD}oa${NC} — OpenClaw on Android CLI v${OA_VERSION}"
+    echo -e "${BOLD}oa${NC} — OpenClaw on Android CLI v${FOXTERM_VERSION}"
     echo ""
     echo "Usage: oa [option]"
     echo ""
@@ -67,14 +67,14 @@ show_help() {
 }
 
 show_version() {
-    echo "oa v${OA_VERSION} (OpenClaw on Android)"
+    echo "oa v${FOXTERM_VERSION} (OpenClaw on Android)"
 
     local latest
     latest=$(curl -sfL --max-time 3 "$REPO_BASE/scripts/lib.sh" 2>/dev/null \
-        | grep -m1 '^OA_VERSION=' | cut -d'"' -f2) || true
+        | grep -m1 '^FOXTERM_VERSION="1.0.0"
 
     if [ -n "${latest:-}" ]; then
-        if [ "$latest" = "$OA_VERSION" ]; then
+        if [ "$latest" = "$FOXTERM_VERSION" ]; then
             echo -e "  ${GREEN}Up to date${NC}"
         else
             echo -e "  ${YELLOW}v${latest} available${NC} - run: oa --update"
@@ -131,7 +131,7 @@ cmd_status() {
 
     echo ""
     echo -e "${BOLD}Version${NC}"
-    echo "  oa:          v${OA_VERSION}"
+    echo "  oa:          v${FOXTERM_VERSION}"
 
     local PLATFORM
     PLATFORM=$(detect_platform 2>/dev/null) || PLATFORM=""

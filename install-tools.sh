@@ -15,7 +15,7 @@ NC='\033[0m'
 
 PROJECT_DIR="$HOME/.HAN"
 PLATFORM_MARKER="$PROJECT_DIR/.platform"
-OA_VERSION="1.0.27"
+FOXTERM_VERSION="1.0.0"
 REPO_TARBALL="https://github.com/HANPU5838/HAN/archive/refs/heads/main.tar.gz"
 
 echo ""
