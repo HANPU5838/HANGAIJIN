@@ -48,3 +48,6 @@ Thumbs.db
 *.env
 *.keystore
 *.jks
+
+# 例外：平台配置
+!platforms/openclaw/config.env
