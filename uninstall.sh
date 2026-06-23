@@ -12,8 +12,8 @@ else
     BOLD='\033[1m'
     NC='\033[0m'
     PLATFORM_MARKER="$PROJECT_DIR/.platform"
-    BASHRC_MARKER_START="# >>> FoxTerm >>>"
-    BASHRC_MARKER_END="# <<< FoxTerm <<<"
+    BASHRC_MARKER_START="# >>> HANGAIJIN >>>"
+    BASHRC_MARKER_END="# <<< HANGAIJIN <<<"
 
     ask_yn() {
         local prompt="$1"
@@ -34,7 +34,7 @@ fi
 
 echo ""
 echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  FoxTerm - 卸载程序${NC}"
+echo -e "${BOLD}  HANGAIJIN - 卸载程序${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
 

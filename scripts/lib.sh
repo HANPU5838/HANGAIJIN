@@ -73,8 +73,8 @@ fix_npm_global_shebangs() {
 }
 
 REPO_BASE="$REPO_BASE_ORIGIN"
-BASHRC_MARKER_START="# >>> FoxTerm >>>"
-BASHRC_MARKER_END="# <<< FoxTerm <<<"
+BASHRC_MARKER_START="# >>> HANGAIJIN >>>"
+BASHRC_MARKER_END="# <<< HANGAIJIN <<<"
 FOXTERM_VERSION="1.0.0"
 
 # ── 平台检测 ──
