@@ -99,7 +99,7 @@ fi
 
 echo ""
 echo "══════════════════════════════════════════════"
-echo "  FoxTerm — Installing components"
+echo "  HANGAIJIN — 安装组件"
 echo "══════════════════════════════════════════════"
 echo ""
 
@@ -584,7 +584,7 @@ echo -e "  ${GREEN}✓${NC} Patches applied"
 echo -e "▸ ${YELLOW}[6/7]${NC} Configuring environment..."
 
 cat > "$HOME/.bashrc" << BASHRC
-# FoxTerm environment
+# HANGAIJIN environment
 export PREFIX="$PREFIX"
 export HOME="$HOME"
 export TMPDIR="$TMPDIR"

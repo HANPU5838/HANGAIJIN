@@ -2,7 +2,7 @@
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/scripts/lib.sh"
-OA_CMD() { echo -e "${BOLD}oa${NC} — FoxTerm CLI v${FOXTERM_VERSION}"; }
+OA_CMD() { echo -e "${BOLD}oa${NC} — HANGAIJIN CLI v${FOXTERM_VERSION}"; }
 
 case "${1:-}" in
     start)
@@ -23,7 +23,7 @@ case "${1:-}" in
         echo "✅ OpenClaw 已重启"
         ;;
     status)
-        echo -e "  ${BOLD}FoxTerm${NC} v${FOXTERM_VERSION}"
+        echo -e "  ${BOLD}HANGAIJIN${NC} v${FOXTERM_VERSION}"
         echo "  OpenClaw: $(openclaw --version 2>/dev/null || echo '未安装')"
         ;;
     update)

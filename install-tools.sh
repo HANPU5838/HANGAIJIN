@@ -20,7 +20,7 @@ REPO_TARBALL="https://github.com/HANPU5838/HANGAIJIN/archive/refs/heads/main.tar
 
 echo ""
 echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  FoxTerm - 安装可选工具${NC}"
+echo -e "${BOLD}  HANGAIJIN - 安装可选工具${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
 
