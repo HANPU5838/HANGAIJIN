@@ -31,7 +31,7 @@ const path = require('path');
 
 const _wrapperPath = process.env._OA_WRAPPER_PATH || path.join(
   process.env.HOME || '/data/data/com.termux/files/home',
-  '.HAN', 'bin', 'node'
+  '.hangaijin', 'bin', 'node'
 );
 try {
   if (fs.existsSync(_wrapperPath)) {
