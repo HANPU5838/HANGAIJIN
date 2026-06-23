@@ -11,7 +11,7 @@ BOLD='\033[1m'
 NC='\033[0m'
 
 echo ""
-echo -e "${BOLD}FoxTerm - OpenClaw on Android Bootstrap${NC}"
+echo -e "${BOLD}FoxTerm - OpenClaw 安卓引导安装${NC}"
 echo ""
 
 if ! command -v curl &>/dev/null; then

@@ -9,11 +9,11 @@ NC='\033[0m'
 
 PROJECT_DIR="$HOME/.HAN"
 PLATFORM_MARKER="$PROJECT_DIR/.platform"
-OA_VERSION="1.0.27"
+FOXTERM_VERSION="1.0.27"
 
 echo ""
 echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  OpenClaw on Android - Updater v${OA_VERSION}${NC}"
+echo -e "${BOLD}  FoxTerm - 更新程序 v${FOXTERM_VERSION}${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
 

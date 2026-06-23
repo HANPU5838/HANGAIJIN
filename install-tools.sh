@@ -20,7 +20,7 @@ REPO_TARBALL="https://github.com/HANPU5838/HAN/archive/refs/heads/main.tar.gz"
 
 echo ""
 echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  OpenClaw on Android - Install Tools${NC}"
+echo -e "${BOLD}  FoxTerm - 安装可选工具${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
 

@@ -99,7 +99,7 @@ fi
 
 echo ""
 echo "══════════════════════════════════════════════"
-echo "  OpenClaw Android — Installing components"
+echo "  FoxTerm — Installing components"
 echo "══════════════════════════════════════════════"
 echo ""
 
@@ -584,7 +584,7 @@ echo -e "  ${GREEN}✓${NC} Patches applied"
 echo -e "▸ ${YELLOW}[6/7]${NC} Configuring environment..."
 
 cat > "$HOME/.bashrc" << BASHRC
-# OpenClaw Android environment
+# FoxTerm environment
 export PREFIX="$PREFIX"
 export HOME="$HOME"
 export TMPDIR="$TMPDIR"
@@ -605,7 +605,7 @@ export GIT_EXEC_PATH="$PREFIX/libexec/git-core"
 export GIT_TEMPLATE_DIR="$PREFIX/share/git-core/templates"
 export CLAWDHUB_WORKDIR="$HOME/.openclaw/workspace"
 export CPATH="$PREFIX/include/glib-2.0:$PREFIX/lib/glib-2.0/include"
-# npm registry (auto-detected by OpenClaw Android, safe to override manually)
+# npm registry (auto-detected by FoxTerm, safe to override manually)
 [ -z "\${NPM_CONFIG_REGISTRY:-}" ] && [ -s "\$HOME/.HAN/.npm-registry" ] && \\
     export NPM_CONFIG_REGISTRY="\$(cat "\$HOME/.HAN/.npm-registry")"
 BASHRC

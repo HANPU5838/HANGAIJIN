@@ -115,7 +115,7 @@ cmd_backup() {
     fi
 
     echo ""
-    echo -e "${BOLD}OpenClaw on Android — Backup${NC}"
+    echo -e "${BOLD}FoxTerm — 备份${NC}"
     echo -e "────────────────────────────────────────"
 
     # Load platform config to get PLATFORM_DATA_DIR
@@ -275,7 +275,7 @@ cmd_restore() {
     fi
 
     echo ""
-    echo -e "${BOLD}OpenClaw on Android — Restore${NC}"
+    echo -e "${BOLD}FoxTerm — 恢复${NC}"
     echo -e "────────────────────────────────────────"
 
     # Collect backup files

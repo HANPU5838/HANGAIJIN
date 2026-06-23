@@ -23,7 +23,7 @@ check_warn() {
     WARN=$((WARN + 1))
 }
 
-echo "=== OpenClaw on Android - Installation Verification ==="
+echo "=== FoxTerm - 安装验证 ==="
 echo ""
 
 if command -v node &>/dev/null; then
@@ -110,7 +110,7 @@ else
     check_warn "opencode not installed (non-critical)"
 fi
 
-if grep -qF "OpenClaw on Android" "$HOME/.bashrc" 2>/dev/null; then
+if grep -qF "FoxTerm" "$HOME/.bashrc" 2>/dev/null; then
     check_pass ".bashrc contains environment block"
 else
     check_fail ".bashrc missing environment block"
