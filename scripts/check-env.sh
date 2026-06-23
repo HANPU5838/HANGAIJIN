@@ -6,7 +6,7 @@ source "$SCRIPT_DIR/lib.sh"
 
 ERRORS=0
 
-echo "=== FoxTerm - 环境检查 ==="
+echo "=== HANGAIJIN - 环境检查 ==="
 echo ""
 
 if [ -z "${PREFIX:-}" ]; then
