@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/scripts/lib.sh"
 
-echo "=== Installing OpenClaw Platform Package ==="
+echo "=== 正在安装 OpenClaw 平台包 ==="
 echo ""
 
 export CPATH="$PREFIX/include/glib-2.0:$PREFIX/lib/glib-2.0/include"
@@ -56,11 +56,11 @@ if npm install -g clawdhub --no-fund --no-audit; then
         if (cd "$CLAWHUB_DIR" && npm install undici --no-fund --no-audit); then
             echo -e "${GREEN}[OK]${NC}   undici installed for clawdhub"
         else
-            echo -e "${YELLOW}[WARN]${NC} undici installation failed (clawdhub may not work)"
+            echo -e "${YELLOW}[WARN]${NC} undici installation 失败 (clawdhub may not work)"
         fi
     fi
 else
-    echo -e "${YELLOW}[WARN]${NC} clawdhub installation failed (non-critical)"
+    echo -e "${YELLOW}[WARN]${NC} clawdhub installation 失败 (non-critical)"
     echo "       Retry manually: npm i -g clawdhub"
 fi
 

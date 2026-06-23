@@ -6,7 +6,7 @@ source "$SCRIPT_DIR/lib.sh"
 
 ERRORS=0
 
-echo "=== OpenClaw on Android - Environment Check ==="
+echo "=== FoxTerm - 环境检查 ==="
 echo ""
 
 if [ -z "${PREFIX:-}" ]; then
@@ -14,7 +14,7 @@ if [ -z "${PREFIX:-}" ]; then
     echo "       This script is designed for Termux on Android."
     exit 1
 else
-    echo -e "${GREEN}[OK]${NC}   Termux detected (PREFIX=$PREFIX)"
+    echo -e "${GREEN}[OK]${NC}   Termux 已检测 (PREFIX=$PREFIX)"
 fi
 
 ARCH=$(uname -m)
@@ -31,10 +31,10 @@ fi
 
 AVAILABLE_MB=$(df "$PREFIX" 2>/dev/null | awk 'NR==2 {print int($4/1024)}')
 if [ -n "$AVAILABLE_MB" ] && [ "$AVAILABLE_MB" -lt 1000 ]; then
-    echo -e "${RED}[FAIL]${NC} Insufficient disk space: ${AVAILABLE_MB}MB available (need 1000MB+)"
+    echo -e "${RED}[FAIL]${NC} Insufficient disk space: ${AVAILABLE_MB}MB 可用 (need 1000MB+)"
     ERRORS=$((ERRORS + 1))
 else
-    echo -e "${GREEN}[OK]${NC}   Disk space: ${AVAILABLE_MB:-unknown}MB available"
+    echo -e "${GREEN}[OK]${NC}   磁盘空间: ${AVAILABLE_MB:-unknown}MB 可用"
 fi
 
 if command -v node &>/dev/null; then
@@ -46,12 +46,12 @@ if command -v node &>/dev/null; then
         echo -e "${YELLOW}[WARN]${NC} Node.js >= 22 required. Will be upgraded during install."
     fi
 else
-    echo -e "${YELLOW}[INFO]${NC} Node.js not found. Will be installed via glibc environment."
+    echo -e "${YELLOW}[INFO]${NC} 未检测到 Node.js. 将通过 glibc 环境安装."
 fi
 
 SDK_INT=$(getprop ro.build.version.sdk 2>/dev/null || echo "0")
 if [ "$SDK_INT" -ge 31 ] 2>/dev/null; then
-    echo -e "${YELLOW}[INFO]${NC} Android 12+ detected — if background processes get killed (signal 9),"
+    echo -e "${YELLOW}[INFO]${NC} 检测到 Android 12+ — 如果后台进程被杀死 (signal 9),"
     echo "       see: https://github.com/HANPU5838/HAN/blob/main/docs/disable-phantom-process-killer.md"
 fi
 
@@ -60,5 +60,5 @@ if [ "$ERRORS" -gt 0 ]; then
     echo -e "${RED}Environment check failed with $ERRORS error(s).${NC}"
     exit 1
 else
-    echo -e "${GREEN}Environment check passed.${NC}"
+    echo -e "${GREEN}环境检查通过.${NC}"
 fi
