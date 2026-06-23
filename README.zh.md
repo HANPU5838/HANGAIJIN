@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-<img src="docs/images/HAN.jpg" alt="FoxTerm">
+<img src="docs/images/openclaw_android.jpg" alt="FoxTerm">
 
 ![Android 7.0+](https://img.shields.io/badge/Android-7.0%2B-brightgreen)
 ![Termux](https://img.shields.io/badge/Termux-Required-orange)
@@ -27,16 +27,16 @@ curl -sL https://raw.githubusercontent.com/HANPU5838/HAN/main/bootstrap.sh | bas
 
 ## 环境要求
 
-- Android 7.0+
+- Android 7.0 及以上
 - Termux（从 F-Droid 安装）
-- 建议 2GB+ 可用内存
-- 1GB+ 可用存储
+- 建议 2GB 及以上可用内存
+- 1GB 及以上可用存储
 
 ## 包含组件
 
 | 组件 | 说明 |
 |------|------|
-| OpenClaw 核心 | AI 智能体运行环境 |
+| OpenClaw 核心 | 智能体运行环境 |
 | Chromium | 浏览器自动化引擎 |
 | Node.js | JavaScript 运行时 |
 | 可选工具 | tmux、code-server、ttyd、dufs、android-tools |
@@ -61,10 +61,10 @@ oa.sh status
 
 ## 自定义配置
 
-编辑 `~/.openclaw/agents/main/agent/` 配置 AI 智能体的性格、工具和记忆。
+编辑 `~/.openclaw/agents/main/agent/` 配置智能体的性格、工具和记忆。
 
 ---
 
-*在 Android 设备上运行 AI 智能体。*
+*在 Android 设备上运行智能体。*
 
-> 本项目基于相关开源项目重新构建与优化。</details>
+> 参考并整合自网络公开资源。</details>
