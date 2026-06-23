@@ -5,11 +5,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/scripts/lib.sh"
 
 echo ""
+echo -e "${BOLD}╔══════════════════════════════╗${NC}"
+echo -e "${BOLD}║  🦊 HANGAIJIN 安装器         ║${NC}"
+echo -e "${BOLD}╚══════════════════════════════╝${NC}"
 echo ""
-echo -e "${BOLD}  🦊 HANGAIJIN 安装器 v${FOXTERM_VERSION}${NC}"
-echo ""
-echo ""
-echo "本脚本将在 Termux 上安装 OpenClaw，自动适配架构。"
+echo "将在 Termux 上安装 OpenClaw 智能体环境。"
 echo ""
 
 step() {
@@ -18,9 +18,7 @@ step() {
     echo ""
 }
 
-# ──────────────────────────────────────────────
 # 第一步：环境检查
-# ──────────────────────────────────────────────
 step 1 "环境检查"
 if command -v termux-wake-lock &>/dev/null; then
     termux-wake-lock 2>/dev/null || true
@@ -28,17 +26,13 @@ if command -v termux-wake-lock &>/dev/null; then
 fi
 bash "$SCRIPT_DIR/scripts/check-env.sh"
 
-# ──────────────────────────────────────────────
 # 第二步：选择平台
-# ──────────────────────────────────────────────
 step 2 "选择平台"
 SELECTED_PLATFORM="openclaw"
 echo -e "${GREEN}[通过]${NC}   平台: OpenClaw"
 load_platform_config "$SELECTED_PLATFORM" "$SCRIPT_DIR"
 
-# ──────────────────────────────────────────────
 # 第三步：选择可选工具
-# ──────────────────────────────────────────────
 step 3 "选择可选工具"
 INSTALL_TMUX=false
 INSTALL_TTYD=false
@@ -66,16 +60,12 @@ export INSTALL_TMUX INSTALL_TTYD INSTALL_DUFS INSTALL_ANDROID_TOOLS
 export INSTALL_CODE_SERVER INSTALL_OPENCODE INSTALL_CLAUDE_CODE INSTALL_GEMINI_CLI INSTALL_CODEX_CLI
 export INSTALL_CHROMIUM
 
-# ──────────────────────────────────────────────
 # 第四步：基础环境（L1）
-# ──────────────────────────────────────────────
 step 4 "基础环境"
 bash "$SCRIPT_DIR/scripts/install-infra-deps.sh"
 bash "$SCRIPT_DIR/scripts/setup-paths.sh"
 
-# ──────────────────────────────────────────────
-# 第五步：运行时依赖（L2）
-# ──────────────────────────────────────────────
+# 第五步：运行环境（L2）
 step 5 "运行环境"
 if [ "${PLATFORM_NEEDS_GLIBC:-false}" = true ]; then
     bash "$SCRIPT_DIR/scripts/install-glibc.sh"
@@ -90,7 +80,6 @@ if [ "${PLATFORM_NEEDS_PROOT:-false}" = true ]; then
     pkg install -y proot
 fi
 
-# 设置当前会话环境变量
 GLIBC_BIN_DIR="$PROJECT_DIR/bin"
 GLIBC_NODE_DIR="$PROJECT_DIR/node"
 export PATH="$GLIBC_BIN_DIR:$GLIBC_NODE_DIR/bin:$HOME/.local/bin:$PATH"
@@ -99,18 +88,13 @@ export TMP="$TMPDIR"
 export TEMP="$TMPDIR"
 export OA_GLIBC=1
 
-# 自动检测 npm 镜像源
 command -v resolve_npm_registry >/dev/null 2>&1 && resolve_npm_registry || true
 
-# ──────────────────────────────────────────────
 # 第六步：安装 OpenClaw
-# ──────────────────────────────────────────────
 step 6 "安装 OpenClaw"
 bash "$SCRIPT_DIR/platforms/$SELECTED_PLATFORM/install.sh"
 
-# ──────────────────────────────────────────────
-# 第六点五步：环境变量 + CLI 命令 + 标记文件
-# ──────────────────────────────────────────────
+# 环境变量 + CLI 命令 + 标记文件
 echo ""
 echo -e "${BOLD}[6.5] 环境变量 + 命令工具 + 标记${NC}"
 echo ""
@@ -140,9 +124,7 @@ cp "$SCRIPT_DIR/scripts/backup.sh" "$PROJECT_DIR/scripts/backup.sh"
 rm -rf "$PROJECT_DIR/platforms/$SELECTED_PLATFORM"
 cp -R "$SCRIPT_DIR/platforms/$SELECTED_PLATFORM" "$PROJECT_DIR/platforms/$SELECTED_PLATFORM"
 
-# ──────────────────────────────────────────────
 # 第七步：安装可选工具（L3）
-# ──────────────────────────────────────────────
 step 7 "可选工具"
 if [ "$INSTALL_TMUX" = true ]; then pkg install -y tmux; fi
 if [ "$INSTALL_TTYD" = true ]; then pkg install -y ttyd; fi
@@ -171,16 +153,14 @@ fi
 
 command -v fix_npm_global_shebangs >/dev/null 2>&1 && fix_npm_global_shebangs || true
 
-# ──────────────────────────────────────────────
 # 第八步：验证安装
-# ──────────────────────────────────────────────
 step 8 "验证安装"
 bash "$SCRIPT_DIR/tests/verify-install.sh"
 
 echo ""
-echo ""
-echo -e "${GREEN}${BOLD}  ✅ 安装完成！${NC}"
-echo ""
+echo -e "${BOLD}╔══════════════════════════════╗${NC}"
+echo -e "${BOLD}║  ✅ 安装完成！               ║${NC}"
+echo -e "${BOLD}╚══════════════════════════════╝${NC}"
 echo ""
 echo -e "  $PLATFORM_NAME $($PLATFORM_VERSION_CMD 2>/dev/null || echo '')"
 echo ""
