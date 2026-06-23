@@ -119,14 +119,14 @@ source ~/.bashrc
 ## "Cannot find module glibc-compat.js" 에러
 
 ```
-Error: Cannot find module '/data/data/com.termux/files/home/.openclaw-lite/patches/glibc-compat.js'
+Error: Cannot find module '/data/data/com.termux/files/home/.foxterm/patches/glibc-compat.js'
 ```
 
 > **참고**: 이 문제는 v1.0.0 이전(Bionic) 설치에서만 발생합니다. v1.0.0+(glibc)에서는 `glibc-compat.js`가 node 래퍼 스크립트에 의해 로딩되므로 `NODE_OPTIONS`를 사용하지 않습니다.
 
 ### 원인
 
-`~/.bashrc`의 `NODE_OPTIONS` 환경변수가 이전 설치 경로(`.openclaw-lite`)를 참조하고 있습니다. 프로젝트명이 "OpenClaw Lite"였던 이전 버전에서 업데이트한 경우 발생합니다.
+`~/.bashrc`의 `NODE_OPTIONS` 환경변수가 이전 설치 경로(`.foxterm`)를 참조하고 있습니다. 프로젝트명이 "OpenClaw Lite"였던 이전 버전에서 업데이트한 경우 발생합니다.
 
 ### 해결 방법
 
@@ -139,7 +139,7 @@ oa --update && source ~/.bashrc
 또는 수동으로 수정:
 
 ```bash
-sed -i 's/\.openclaw-lite/\.HAN/g' ~/.bashrc && source ~/.bashrc
+sed -i 's/\.foxterm/\.foxterm/g' ~/.bashrc && source ~/.bashrc
 ```
 
 ## 업데이트 중 "systemctl --user unavailable: spawn systemctl ENOENT" 에러
@@ -189,7 +189,7 @@ Reason: global update
 업데이트 후 아래 스크립트로 sharp를 수동 빌드하세요:
 
 ```bash
-bash ~/.HAN/scripts/build-sharp.sh
+bash ~/.foxterm/scripts/build-sharp.sh
 ```
 
 또는 `openclaw update` 대신 `oa --update`를 사용하면 sharp를 자동으로 처리합니다:

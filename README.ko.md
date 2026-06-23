@@ -449,7 +449,7 @@ PLATFORM_NEEDS_BUILD_TOOLS=true
 - `git` 설치 (npm git 의존성 및 저장소 클론에 필요)
 
 **setup-paths.sh:**
-- `$PREFIX/tmp`와 `$HOME/.HAN/patches` 디렉토리 생성
+- `$PREFIX/tmp`와 `$HOME/.foxterm/patches` 디렉토리 생성
 - 표준 Linux 경로(`/bin/sh`, `/usr/bin/env`, `/tmp`)의 Termux 매핑 표시
 
 ### [5/8] 플랫폼 런타임 의존성 (L2)
@@ -546,7 +546,7 @@ PLATFORM_NEEDS_BUILD_TOOLS=true
 - `curl` 사용 가능 여부 확인
 - `~/.foxterm/.platform` 마커 파일에서 플랫폼 감지
 - 아키텍처 감지: glibc (`.glibc-arch` 마커) 또는 Bionic (레거시)
-- 구버전 디렉토리 마이그레이션 (`.openclaw-lite` → `.HAN` — 레거시 호환)
+- 구버전 디렉토리 마이그레이션 (`.foxterm` → `.foxterm` — 레거시 호환)
 - **Phantom Process Killer** (Android 12+): [비활성화 가이드](docs/disable-phantom-process-killer.ko.md) 링크와 함께 안내 메시지를 표시
 
 ### [2/5] 최신 릴리스 다운로드
