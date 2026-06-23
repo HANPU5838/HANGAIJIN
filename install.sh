@@ -5,9 +5,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/scripts/lib.sh"
 
 echo ""
-echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  FoxTerm - OpenClaw 安卓安装器 v${FOXTERM_VERSION}${NC}"
-echo -e "${BOLD}========================================${NC}"
+echo ""
+echo -e "${BOLD}  🦊 HANGAIJIN 安装器 v${FOXTERM_VERSION}${NC}"
+echo ""
 echo ""
 echo "本脚本将在 Termux 上安装 OpenClaw，自动适配架构。"
 echo ""
@@ -15,7 +15,7 @@ echo ""
 step() {
     echo ""
     echo -e "${BOLD}[$1/8] $2${NC}"
-    echo "----------------------------------------"
+    echo ""
 }
 
 # ──────────────────────────────────────────────
@@ -113,7 +113,7 @@ bash "$SCRIPT_DIR/platforms/$SELECTED_PLATFORM/install.sh"
 # ──────────────────────────────────────────────
 echo ""
 echo -e "${BOLD}[6.5] 环境变量 + 命令工具 + 标记${NC}"
-echo "----------------------------------------"
+echo ""
 bash "$SCRIPT_DIR/scripts/setup-env.sh"
 
 PLATFORM_ENV_SCRIPT="$SCRIPT_DIR/platforms/$SELECTED_PLATFORM/env.sh"
@@ -178,9 +178,9 @@ step 8 "验证安装"
 bash "$SCRIPT_DIR/tests/verify-install.sh"
 
 echo ""
-echo -e "${BOLD}========================================${NC}"
+echo ""
 echo -e "${GREEN}${BOLD}  ✅ 安装完成！${NC}"
-echo -e "${BOLD}========================================${NC}"
+echo ""
 echo ""
 echo -e "  $PLATFORM_NAME $($PLATFORM_VERSION_CMD 2>/dev/null || echo '')"
 echo ""

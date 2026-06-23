@@ -10,8 +10,8 @@ echo "=== FoxTerm - 环境检查 ==="
 echo ""
 
 if [ -z "${PREFIX:-}" ]; then
-    echo -e "${RED}[FAIL]${NC} Not running in Termux (\$PREFIX not set)"
-    echo "       This script is designed for Termux on Android."
+    echo -e "${RED}[FAIL]${NC} 未在 Termux 环境中运行 (\$PREFIX not set)"
+    echo "       此脚本专为 Android Termux 设计。"
     exit 1
 else
     echo -e "${GREEN}[OK]${NC}   Termux 已检测 (PREFIX=$PREFIX)"
@@ -20,13 +20,13 @@ fi
 ARCH=$(uname -m)
 echo -n "       Architecture: $ARCH"
 if [ "$ARCH" = "aarch64" ]; then
-    echo -e " ${GREEN}(recommended)${NC}"
+    echo -e " ${GREEN}(推荐)${NC}"
 elif [ "$ARCH" = "armv7l" ] || [ "$ARCH" = "arm" ]; then
-    echo -e " ${YELLOW}(supported, but aarch64 recommended)${NC}"
+    echo -e " ${YELLOW}(supported, but aarch64 推荐)${NC}"
 elif [ "$ARCH" = "x86_64" ] || [ "$ARCH" = "i686" ]; then
-    echo -e " ${YELLOW}(emulator detected)${NC}"
+    echo -e " ${YELLOW}(检测到模拟器)${NC}"
 else
-    echo -e " ${YELLOW}(unknown, may not work)${NC}"
+    echo -e " ${YELLOW}(未知架构，可能无法正常运行)${NC}"
 fi
 
 AVAILABLE_MB=$(df "$PREFIX" 2>/dev/null | awk 'NR==2 {print int($4/1024)}')

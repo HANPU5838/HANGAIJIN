@@ -153,7 +153,7 @@ done
 
 if [ "$ANYTHING_SELECTED" = false ]; then
     echo ""
-    echo "No tools selected."
+    echo "未选择工具，跳过。"
     exit 0
 fi
 
@@ -165,7 +165,7 @@ fi
 
 if [ "$NEEDS_TARBALL" = true ]; then
     echo ""
-    echo "Downloading install scripts..."
+    echo "下载安装脚本..."
     mkdir -p "$PREFIX/tmp"
     RELEASE_TMP=$(mktemp -d "$PREFIX/tmp/oa-install.XXXXXX") || {
         echo -e "${RED}[FAIL]${NC} Failed to create temp directory"
@@ -186,10 +186,10 @@ echo ""
 echo -e "${BOLD}Installing selected tools...${NC}"
 echo ""
 
-if [ "$INSTALL_TMUX" = true ]; then echo "Installing tmux..."; if pkg install -y tmux; then echo -e "${GREEN}[OK]${NC}   tmux installed"; fi; fi
-if [ "$INSTALL_TTYD" = true ]; then echo "Installing ttyd..."; if pkg install -y ttyd; then echo -e "${GREEN}[OK]${NC}   ttyd installed"; fi; fi
-if [ "$INSTALL_DUFS" = true ]; then echo "Installing dufs..."; if pkg install -y dufs; then echo -e "${GREEN}[OK]${NC}   dufs installed"; fi; fi
-if [ "$INSTALL_ANDROID_TOOLS" = true ]; then echo "Installing android-tools..."; if pkg install -y android-tools; then echo -e "${GREEN}[OK]${NC}   android-tools installed"; fi; fi
+if [ "$INSTALL_TMUX" = true ]; then echo "正在安装 tmux..."; if pkg install -y tmux; then echo -e "${GREEN}[OK]${NC}   tmux 安装成功"; fi; fi
+if [ "$INSTALL_TTYD" = true ]; then echo "正在安装 ttyd..."; if pkg install -y ttyd; then echo -e "${GREEN}[OK]${NC}   ttyd 安装成功"; fi; fi
+if [ "$INSTALL_DUFS" = true ]; then echo "正在安装 dufs..."; if pkg install -y dufs; then echo -e "${GREEN}[OK]${NC}   dufs 安装成功"; fi; fi
+if [ "$INSTALL_ANDROID_TOOLS" = true ]; then echo "正在安装 android-tools..."; if pkg install -y android-tools; then echo -e "${GREEN}[OK]${NC}   android-tools 安装成功"; fi; fi
 
 if [ "$INSTALL_CODE_SERVER" = true ]; then
     mkdir -p "$PROJECT_DIR/patches"
@@ -225,11 +225,11 @@ if [ "$INSTALL_PLAYWRIGHT" = true ]; then
     fi
 fi
 
-if [ "$INSTALL_CLAUDE_CODE" = true ]; then echo "Installing Claude Code..."; if npm install -g @anthropic-ai/claude-code; then echo -e "${GREEN}[OK]${NC}   Claude Code installed"; fi; fi
-if [ "$INSTALL_GEMINI_CLI" = true ]; then echo "Installing Gemini CLI..."; if npm install -g @google/gemini-cli; then echo -e "${GREEN}[OK]${NC}   Gemini CLI installed"; fi; fi
+if [ "$INSTALL_CLAUDE_CODE" = true ]; then echo "正在安装 Claude Code..."; if npm install -g @anthropic-ai/claude-code; then echo -e "${GREEN}[OK]${NC}   Claude Code 安装成功"; fi; fi
+if [ "$INSTALL_GEMINI_CLI" = true ]; then echo "正在安装 Gemini CLI..."; if npm install -g @google/gemini-cli; then echo -e "${GREEN}[OK]${NC}   Gemini CLI 安装成功"; fi; fi
 if [ "$INSTALL_CODEX_CLI" = true ]; then
     npm uninstall -g @openai/codex 2>/dev/null || true
-    echo "Installing Codex CLI (Termux)..."
+    echo "正在安装 Codex CLI..."
     if npm install -g @mmmbuto/codex-cli-termux; then
         # Create codex CLI wrapper (DioNanos fork launcher fix)
         _codex_bin="$PREFIX/bin/codex"

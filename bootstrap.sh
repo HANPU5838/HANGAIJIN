@@ -11,15 +11,15 @@ BOLD='\033[1m'
 NC='\033[0m'
 
 echo ""
-echo -e "${BOLD}FoxTerm - OpenClaw 安卓引导安装${NC}"
+echo -e "${BOLD}HANGAIJIN 安装引导${NC}"
 echo ""
 
 if ! command -v curl &>/dev/null; then
-    echo -e "${RED}[FAIL]${NC} curl not found. Install it with: pkg install curl"
+    echo -e "${RED}[FAIL]${NC} 未找到 curl，请运行: pkg install curl"
     exit 1
 fi
 
-echo "Downloading installer..."
+echo "⬇️ 正在下载安装程序..."
 mkdir -p "$INSTALL_DIR"
 curl -sfL "$REPO_TARBALL" | tar xz -C "$INSTALL_DIR" --strip-components=1
 
