@@ -68,7 +68,7 @@ echo ""
 echo "尝试原生编译作为后备方案..."
 
 # Install required packages
-echo "Installing build dependencies..."
+echo "正在安装编译依赖..."
 if ! pkg install -y libvips binutils; then
     echo -e "${YELLOW}[WARN]${NC} Failed to install build dependencies"
     echo "       Image processing will not be available, but OpenClaw will work normally."
