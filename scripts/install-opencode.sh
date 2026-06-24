@@ -196,7 +196,7 @@ create_proot_wrapper "$PREFIX/bin/opencode" "$LDSO_OPENCODE" "$OPENCODE_BIN" "Op
 
 # Verify
 echo ""
-echo "Verifying OpenCode..."
+echo "正在验证 OpenCode..."
 OC_VER=$("$PREFIX/bin/opencode" --version 2>/dev/null) || true
 if [ -n "$OC_VER" ]; then
     echo -e "${GREEN}[OK]${NC}   OpenCode v$OC_VER verified"

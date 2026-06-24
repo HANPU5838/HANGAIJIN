@@ -106,7 +106,7 @@ RELEASE_TMP=$(mktemp -d "$PREFIX/tmp/oa-update.XXXXXX") || {
 }
 trap 'rm -rf "$RELEASE_TMP"' EXIT
 
-echo "Downloading latest scripts..."
+echo "正在下载最新脚本..."
 echo "  (This may take a moment depending on network speed)"
 if curl -sfL "$REPO_TARBALL" | tar xz -C "$RELEASE_TMP" --strip-components=1; then
     echo -e "${GREEN}[OK]${NC}   Downloaded latest release"

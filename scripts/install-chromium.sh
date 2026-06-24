@@ -80,7 +80,7 @@ fi
 
 # ── Step 3: Configure OpenClaw browser settings
 
-echo "Configuring OpenClaw browser settings..."
+echo "正在配置 OpenClaw 浏览器设置..."
 
 if command -v node &>/dev/null; then
     export CHROMIUM_BIN

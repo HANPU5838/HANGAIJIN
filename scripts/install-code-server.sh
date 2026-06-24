@@ -85,7 +85,7 @@ DOWNLOAD_URL="https://github.com/coder/code-server/releases/download/v${VERSION}
 TMP_DIR=$(mktemp -d "$PREFIX/tmp/code-server-install.XXXXXX") || fail_warn "Failed to create temp directory"
 trap 'rm -rf "$TMP_DIR"' EXIT
 
-echo "Downloading code-server v${VERSION}..."
+echo "正在下载 code-server v${VERSION}..."
 echo "  (File size ~121MB — this may take several minutes depending on network speed)"
 if ! curl -fL --max-time 300 "$DOWNLOAD_URL" -o "$TMP_DIR/$TARBALL"; then
     fail_warn "Failed to download code-server v${VERSION}"
@@ -94,7 +94,7 @@ echo -e "${GREEN}[OK]${NC}   Downloaded $TARBALL"
 
 # ── Extract (ignore hard link errors) ─────────
 
-echo "Extracting code-server... (this may take a moment)"
+echo "正在解压 code-server..."
 # Android's filesystem does not support hard links, so tar will report errors
 # for hardlinked .node files. We extract what we can and recover them below.
 tar -xzf "$TMP_DIR/$TARBALL" -C "$TMP_DIR" 2>/dev/null || true

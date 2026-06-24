@@ -49,7 +49,7 @@ fi
 #   4. @img/sharp-wasm32/sharp.node                (prebuilt WASM) ← this
 # By installing @img/sharp-wasm32, path 4 catches the fallback automatically.
 
-echo "Installing sharp WebAssembly runtime..."
+echo "正在安装 sharp WebAssembly 运行时..."
 if (cd "$OPENCLAW_DIR" && npm install @img/sharp-wasm32 --force --no-audit --no-fund 2>&1 | tail -3); then
     if node -e "require('$OPENCLAW_DIR/node_modules/sharp')" 2>/dev/null; then
         echo ""
@@ -65,7 +65,7 @@ fi
 # ── Strategy 2: Native rebuild (last resort) ────────────────────────────
 
 echo ""
-echo "Attempting native rebuild as fallback..."
+echo "尝试原生编译作为后备方案..."
 
 # Install required packages
 echo "Installing build dependencies..."

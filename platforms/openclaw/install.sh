@@ -28,8 +28,8 @@ if npm list -g openclaw &>/dev/null 2>&1 || [ -d "$PREFIX/lib/node_modules/openc
     echo -e "${GREEN}[OK]${NC}   Previous installation cleaned"
 fi
 
-echo "Running: npm install -g openclaw@latest --ignore-scripts"
-echo "This may take several minutes..."
+echo "正在安装：npm install -g openclaw@latest"
+echo "这可能需要几分钟..."
 echo ""
 npm install -g openclaw@latest --ignore-scripts
 
@@ -40,19 +40,19 @@ echo -e "${GREEN}[OK]${NC}   OpenClaw installed"
 # Uses npm_config_ignore_scripts=true so sharp's native build doesn't block.
 OPENCLAW_DIR="$(npm root -g)/openclaw"
 if [ -d "$OPENCLAW_DIR" ]; then
-    echo "Restoring optional dependencies..."
+    echo "正在恢复可选依赖..."
     (cd "$OPENCLAW_DIR" && npm_config_ignore_scripts=true node scripts/postinstall-bundled-plugins.mjs 2>/dev/null) || true
 fi
 
 bash "$SCRIPT_DIR/patches/openclaw-apply-patches.sh"
 
 echo ""
-echo "Installing clawdhub (skill manager)..."
+echo "正在安装 clawdhub（技能管理器）..."
 if npm install -g clawdhub --no-fund --no-audit; then
     echo -e "${GREEN}[OK]${NC}   clawdhub installed"
     CLAWHUB_DIR="$(npm root -g)/clawdhub"
     if [ -d "$CLAWHUB_DIR" ] && ! (cd "$CLAWHUB_DIR" && node -e "require('undici')" 2>/dev/null); then
-        echo "Installing undici dependency for clawdhub..."
+        echo "正在安装 clawdhub 的 undici 依赖..."
         if (cd "$CLAWHUB_DIR" && npm install undici --no-fund --no-audit); then
             echo -e "${GREEN}[OK]${NC}   undici installed for clawdhub"
         else
@@ -67,7 +67,7 @@ fi
 mkdir -p "$HOME/.openclaw"
 
 echo ""
-echo "Running: openclaw update"
+echo "正在更新：openclaw update"
 echo "  (This includes building native modules and may take 5-10 minutes)"
 echo ""
 openclaw update || true

@@ -22,12 +22,12 @@ if [ ! -d "$OPENCLAW_DIR" ]; then
     exit 1
 fi
 
-echo "OpenClaw found at: $OPENCLAW_DIR"
+echo "OpenClaw 位于: $OPENCLAW_DIR"
 
 PATCHED=0
 
 # Patch /tmp references to $PREFIX/tmp
-echo "Patching /tmp references..."
+echo "正在修补 /tmp 引用..."
 TMP_FILES=$(grep -rl '/tmp' "$OPENCLAW_DIR" --include='*.js' --include='*.mjs' --include='*.cjs' 2>/dev/null || true)
 
 for f in $TMP_FILES; do
@@ -45,7 +45,7 @@ for f in $TMP_FILES; do
 done
 
 # Patch /bin/sh references
-echo "Patching /bin/sh references..."
+echo "正在修补 /bin/sh 引用..."
 SH_FILES=$(grep -rl '"/bin/sh"' "$OPENCLAW_DIR" --include='*.js' --include='*.mjs' --include='*.cjs' 2>/dev/null || true)
 SH_FILES2=$(grep -rl "'/bin/sh'" "$OPENCLAW_DIR" --include='*.js' --include='*.mjs' --include='*.cjs' 2>/dev/null || true)
 
@@ -59,7 +59,7 @@ for f in $SH_FILES $SH_FILES2; do
 done
 
 # Patch /bin/bash references
-echo "Patching /bin/bash references..."
+echo "正在修补 /bin/bash 引用..."
 BASH_FILES=$(grep -rl '"/bin/bash"' "$OPENCLAW_DIR" --include='*.js' --include='*.mjs' --include='*.cjs' 2>/dev/null || true)
 BASH_FILES2=$(grep -rl "'/bin/bash'" "$OPENCLAW_DIR" --include='*.js' --include='*.mjs' --include='*.cjs' 2>/dev/null || true)
 
@@ -73,7 +73,7 @@ for f in $BASH_FILES $BASH_FILES2; do
 done
 
 # Patch /usr/bin/env references
-echo "Patching /usr/bin/env references..."
+echo "正在修补 /usr/bin/env 引用..."
 ENV_FILES=$(grep -rl '"/usr/bin/env"' "$OPENCLAW_DIR" --include='*.js' --include='*.mjs' --include='*.cjs' 2>/dev/null || true)
 ENV_FILES2=$(grep -rl "'/usr/bin/env'" "$OPENCLAW_DIR" --include='*.js' --include='*.mjs' --include='*.cjs' 2>/dev/null || true)
 

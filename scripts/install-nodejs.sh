@@ -171,8 +171,8 @@ fi
 
 # ── Step 1: Download Node.js linux-arm64 ──────
 
-echo "Downloading Node.js v${NODE_VERSION} (linux-arm64)..."
-echo "  (File size ~25MB — may take a few minutes depending on network speed)"
+echo "正在下载 Node.js v${NODE_VERSION}..."
+echo "  （文件大小约 25MB，下载时间取决于网络速度）"
 mkdir -p "$NODE_DIR"
 
 TMP_DIR=$(mktemp -d "$PREFIX/tmp/node-install.XXXXXX") || {
@@ -188,7 +188,7 @@ fi
 echo -e "${GREEN}[OK]${NC}   Downloaded $NODE_TARBALL"
 
 # Extract
-echo "Extracting Node.js... (this may take a moment)"
+echo "正在解压 Node.js..."
 if ! tar -xJf "$TMP_DIR/$NODE_TARBALL" -C "$NODE_DIR" --strip-components=1; then
     echo -e "${RED}[FAIL]${NC} Failed to extract Node.js"
     exit 1
@@ -202,7 +202,7 @@ echo -e "${GREEN}[OK]${NC}   Extracted to $NODE_DIR"
 # wrappers when users run 'npm install -g npm' or similar commands.
 
 echo ""
-echo "Creating wrapper scripts (grun-style, no patchelf)..."
+echo "创建包装器脚本（grun 风格，无需 patchelf）..."
 mkdir -p "$BIN_DIR"
 
 # Move original node binary to node.real
@@ -250,7 +250,7 @@ echo -e "${GREEN}[OK]${NC}   node wrapper created ($BIN_DIR/node)"
 # ── Step 2.5: Create npm/npx wrapper scripts in BIN_DIR ──
 #
 # npm/npx wrappers go in BIN_DIR (not NODE_DIR/bin/) so npm can't overwrite them.
-echo "Creating npm/npx wrapper scripts..."
+echo "创建 npm/npx 包装器脚本..."
 if [ -f "$NODE_DIR/lib/node_modules/npm/bin/npm-cli.js" ]; then
     cat > "$BIN_DIR/npm" << 'NPMWRAP'
 #!__PREFIX__/bin/bash
@@ -312,7 +312,7 @@ fi
 # ── Step 3: Configure npm ─────────────────────
 
 echo ""
-echo "Configuring npm..."
+echo "正在配置 npm..."
 
 # Set script-shell to ensure npm lifecycle scripts use the correct shell
 # On Android 9+, /bin/sh exists. On 7-8 it doesn't.
@@ -324,7 +324,7 @@ echo -e "${GREEN}[OK]${NC}   npm script-shell set to $PREFIX/bin/sh"
 # ── Step 4: Verify ────────────────────────────
 
 echo ""
-echo "Verifying glibc Node.js..."
+echo "验证 glibc 版 Node.js..."
 
 NODE_VER=$("$BIN_DIR/node" --version 2>/dev/null) || {
     echo -e "${RED}[FAIL]${NC} Node.js verification failed — wrapper script may be broken"

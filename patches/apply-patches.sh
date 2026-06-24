@@ -17,7 +17,7 @@ echo ""
 mkdir -p "$PATCH_DEST"
 
 # Start logging
-echo "Patch application started: $(date)" > "$LOG_FILE"
+echo "补丁应用开始: $(date)" > "$LOG_FILE"
 
 # 1. Copy glibc-compat.js (replaces bionic-compat.js in glibc architecture)
 if [ -f "$SCRIPT_DIR/glibc-compat.js" ]; then
@@ -53,6 +53,6 @@ else
 fi
 
 echo ""
-echo "Patch log saved to: $LOG_FILE"
+echo "补丁日志已保存至: $LOG_FILE"
 echo -e "${GREEN}All patches applied.${NC}"
-echo "Patch application completed: $(date)" >> "$LOG_FILE"
+echo "补丁应用完成: $(date)" >> "$LOG_FILE"
