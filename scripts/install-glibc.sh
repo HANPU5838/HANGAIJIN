@@ -117,15 +117,27 @@ echo "安装 glibc-runner..."
 
 # --assume-installed: these packages are provided by Termux's apt but pacman
 # doesn't know about them, causing dependency resolution failures
-if pacman -Sy glibc-runner --noconfirm --assume-installed bash,patchelf,resolv-conf 2>&1; then
-    echo -e "${GREEN}[OK]${NC}   glibc-runner installed"
-else
-    echo -e "${RED}[FAIL]${NC} Failed to install glibc-runner"
-    if [ "$SIGLEVEL_PATCHED" = true ] && [ -f "${PACMAN_CONF}.bak" ]; then
-        mv "${PACMAN_CONF}.bak" "$PACMAN_CONF"
+RETRIED=false
+while true; do
+    if pacman -Sy glibc-runner --noconfirm --assume-installed bash,patchelf,resolv-conf 2>&1; then
+        echo -e "${GREEN}[OK]${NC}   glibc-runner installed"
+        break
+    else
+        # 如果第一次失败，尝试修复 pacman 数据库后重试
+        if [ "$RETRIED" = false ]; then
+            echo -e "${YELLOW}[INFO]${NC} 安装失败，尝试修复 pacman 数据库..."
+            pacman-db-upgrade 2>/dev/null || true
+            echo -e "${YELLOW}[INFO]${NC} 重新安装 glibc-runner..."
+            RETRIED=true
+        else
+            echo -e "${RED}[失败]${NC} 安装 glibc-runner 失败"
+            if [ "$SIGLEVEL_PATCHED" = true ] && [ -f "${PACMAN_CONF}.bak" ]; then
+                mv "${PACMAN_CONF}.bak" "$PACMAN_CONF"
+            fi
+            exit 1
+        fi
     fi
-    exit 1
-fi
+done
 
 # Restore SigLevel after successful install
 if [ "$SIGLEVEL_PATCHED" = true ] && [ -f "${PACMAN_CONF}.bak" ]; then
