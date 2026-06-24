@@ -41,7 +41,7 @@ echo ""
 reply=""
 read -rp "This will remove the installation. Continue? [y/N] " reply < /dev/tty
 if [[ ! "$reply" =~ ^[Yy]$ ]]; then
-    echo "Aborted."
+    echo "已取消。"
     exit 0
 fi
 
@@ -144,5 +144,5 @@ fi
 
 echo ""
 echo -e "${GREEN}${BOLD}Uninstall complete.${NC}"
-echo "Restart your Termux session to clear environment variables."
+echo "请重启 Termux 会话以清除环境变量。"
 echo ""

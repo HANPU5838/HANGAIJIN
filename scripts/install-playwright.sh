@@ -73,14 +73,14 @@ if [ "$MODE" = "install" ]; then
     if npm list -g playwright-core &>/dev/null; then
         echo -e "${GREEN}[SKIP]${NC} playwright-core already installed"
     else
-        echo "Installing playwright-core..."
+        echo "正在安装 playwright-core..."
         if ! npm install -g playwright-core; then
             fail_warn "Failed to install playwright-core"
         fi
         echo -e "${GREEN}[OK]${NC}   playwright-core installed"
     fi
 elif [ "$MODE" = "update" ]; then
-    echo "Updating playwright-core..."
+    echo "正在更新 playwright-core..."
     if ! npm install -g playwright-core@latest; then
         fail_warn "Failed to update playwright-core"
     fi

@@ -40,7 +40,7 @@ if [ ! -x "$GLIBC_LDSO" ]; then
 fi
 
 if ! command -v proot &>/dev/null; then
-    echo "Installing proot..."
+    echo "正在安装 proot..."
     if ! pkg install -y proot; then
         fail_warn "Failed to install proot — skipping OpenCode install"
     fi
@@ -108,14 +108,14 @@ WRAPPER
 
 # ── Step 1: Create minimal proot rootfs ──────
 
-echo "Setting up proot minimal rootfs..."
+echo "正在设置 proot minimal rootfs..."
 mkdir -p "$PROOT_ROOT/data/data/com.termux/files"
 echo -e "${GREEN}[OK]${NC}   proot rootfs created at $PROOT_ROOT"
 
 # ── Step 2: Install Bun (package manager) ────
 
 echo ""
-echo "Installing Bun..."
+echo "正在安装 Bun..."
 echo "  (Downloading and installing Bun runtime — this may take a few minutes)"
 BUN_BIN="$HOME/.bun/bin/bun"
 if [ -x "$BUN_BIN" ]; then
@@ -151,7 +151,7 @@ echo -e "${GREEN}[OK]${NC}   Bun $BUN_VER verified"
 # ── Step 3: Install OpenCode ────────────────
 
 echo ""
-echo "Installing OpenCode..."
+echo "正在安装 OpenCode..."
 echo "  (Downloading package — this may take a few minutes)"
 # Use bun to install opencode-ai package
 # Note: bun may exit non-zero due to optional platform packages (windows, darwin)
@@ -208,7 +208,7 @@ fi
 # ── Step 4: Create OpenCode config ───────────
 
 echo ""
-echo "Setting up OpenCode configuration..."
+echo "正在设置 OpenCode configuration..."
 
 OPENCODE_CONFIG_DIR="$HOME/.config/opencode"
 OPENCODE_CONFIG="$OPENCODE_CONFIG_DIR/opencode.json"

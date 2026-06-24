@@ -58,13 +58,13 @@ fi
 # ── Step 1: Install x11-repo + Chromium ───────
 
 if [ "$SKIP_PKG_INSTALL" = false ]; then
-    echo "Installing x11-repo (Termux X11 packages)..."
+    echo "正在安装 x11-repo (Termux X11 packages)..."
     if ! pkg install -y x11-repo; then
         fail_warn "Failed to install x11-repo"
     fi
     echo -e "${GREEN}[OK]${NC}   x11-repo installed"
 
-    echo "Installing Chromium..."
+    echo "正在安装 Chromium..."
     echo "  (This is a large package (~400MB) — may take several minutes)"
     if ! pkg install -y chromium; then
         fail_warn "Failed to install Chromium"

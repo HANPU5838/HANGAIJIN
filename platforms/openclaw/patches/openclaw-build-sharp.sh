@@ -83,7 +83,7 @@ if [ ! -e "$PREFIX/bin/ar" ] && [ -x "$PREFIX/bin/llvm-ar" ]; then
 fi
 
 # Install node-gyp globally
-echo "Installing node-gyp..."
+echo "正在安装 node-gyp..."
 if ! npm install -g node-gyp; then
     echo -e "${YELLOW}[WARN]${NC} Failed to install node-gyp"
     echo "       Image processing will not be available, but OpenClaw will work normally."
@@ -101,8 +101,8 @@ if [ ! -f "$HOME/.hangaijin/.glibc-arch" ]; then
 fi
 export CPATH="$PREFIX/include/glib-2.0:$PREFIX/lib/glib-2.0/include"
 
-echo "Rebuilding sharp in $OPENCLAW_DIR..."
-echo "This may take several minutes..."
+echo "正在重建 sharp in $OPENCLAW_DIR..."
+echo "这可能需要几分钟..."
 echo ""
 
 if (cd "$OPENCLAW_DIR" && npm rebuild sharp); then

@@ -13,7 +13,7 @@ echo "=== 正在安装 Infrastructure Dependencies ==="
 echo ""
 
 # Update and upgrade package repos
-echo "Updating package repositories..."
+echo "正在更新 package repositories..."
 echo "  (This may take a minute depending on mirror speed)"
 pkg update -y
 pkg upgrade -y

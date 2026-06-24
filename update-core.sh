@@ -265,7 +265,7 @@ else
             echo -e "${GREEN}[OK]${NC}   OpenCode $CURRENT_OC_VER is already the latest"
         else
             if [ -n "$CURRENT_OC_VER" ] && [ -n "$LATEST_OC_VER" ] && [ "$CURRENT_OC_VER" != "$LATEST_OC_VER" ]; then
-                echo "OpenCode update available: $CURRENT_OC_VER -> $LATEST_OC_VER"
+                echo "OpenCode 有可用更新: $CURRENT_OC_VER -> $LATEST_OC_VER"
             fi
             echo "  (This may take a few minutes for package download and binary processing)"
             if bash "$RELEASE_TMP/scripts/install-opencode.sh"; then
@@ -295,7 +295,7 @@ update_ai_tool() {
     if [ -n "$current_ver" ] && [ -n "$latest_ver" ] && [ "$current_ver" = "$latest_ver" ]; then
         echo -e "${GREEN}[OK]${NC}   $label $current_ver is already the latest"
     elif [ -n "$latest_ver" ]; then
-        echo "Updating $label... ($current_ver -> $latest_ver)"
+        echo "正在更新 $label... ($current_ver -> $latest_ver)"
         echo "  (This may take a few minutes depending on network speed)"
         if npm install -g "$pkg@latest" --no-fund --no-audit --ignore-scripts; then
             echo -e "${GREEN}[OK]${NC}   $label $latest_ver updated"

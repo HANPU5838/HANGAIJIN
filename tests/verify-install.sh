@@ -136,7 +136,7 @@ echo ""
 
 if [ "$FAIL" -gt 0 ]; then
     echo -e "${RED}Installation verification FAILED.${NC}"
-    echo "Please check the errors above and re-run install.sh"
+    echo "请检查上方错误信息后重新运行安装程序"
     exit 1
 else
     echo -e "${GREEN}Installation verification PASSED!${NC}"

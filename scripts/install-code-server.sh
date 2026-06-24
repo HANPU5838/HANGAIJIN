@@ -57,7 +57,7 @@ if [ "$MODE" = "install" ] && [ -n "$CURRENT_VERSION" ]; then
 fi
 
 # Fetch latest version from GitHub API
-echo "Checking latest code-server version..."
+echo "正在检查 latest code-server version..."
 LATEST_VERSION=$(curl -sfL --max-time 10 \
     "https://api.github.com/repos/coder/code-server/releases/latest" \
     | grep '"tag_name"' | head -1 | sed 's/.*"v\([^"]*\)".*/\1/') || true

@@ -22,7 +22,7 @@ PACKAGES=(
     binutils
 )
 
-echo "Installing packages: ${PACKAGES[*]}"
+echo "正在安装 packages: ${PACKAGES[*]}"
 echo "  (This may take a few minutes depending on network speed)"
 pkg install -y "${PACKAGES[@]}"
 

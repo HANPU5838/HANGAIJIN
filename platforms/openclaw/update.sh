@@ -21,7 +21,7 @@ OPENCLAW_UPDATED=false
 if [ -n "$CURRENT_VER" ] && [ -n "$LATEST_VER" ] && [ "$CURRENT_VER" = "$LATEST_VER" ]; then
     echo -e "${GREEN}[OK]${NC}   openclaw $CURRENT_VER is already the latest"
 else
-    echo "Updating openclaw npm package... ($CURRENT_VER → $LATEST_VER)"
+    echo "正在更新 openclaw npm package... ($CURRENT_VER → $LATEST_VER)"
     echo "  (This may take several minutes depending on network speed)"
     if npm install -g openclaw@latest --no-fund --no-audit --ignore-scripts; then
         echo -e "${GREEN}[OK]${NC}   openclaw $LATEST_VER updated"
@@ -42,7 +42,7 @@ fi
 OPENCLAW_DIR="$(npm root -g)/openclaw"
 if [ -d "$OPENCLAW_DIR" ]; then
     if ! node -e "require('$OPENCLAW_DIR/node_modules/@buape/carbon')" 2>/dev/null; then
-        echo "Restoring optional dependencies..."
+        echo "正在恢复可选依赖..."
         (cd "$OPENCLAW_DIR" && npm_config_ignore_scripts=true node scripts/postinstall-bundled-plugins.mjs 2>/dev/null) || true
     fi
 fi
@@ -61,7 +61,7 @@ if command -v clawdhub &>/dev/null; then
     if [ -n "$CLAWDHUB_CURRENT_VER" ] && [ -n "$CLAWDHUB_LATEST_VER" ] && [ "$CLAWDHUB_CURRENT_VER" = "$CLAWDHUB_LATEST_VER" ]; then
         echo -e "${GREEN}[OK]${NC}   clawdhub $CLAWDHUB_CURRENT_VER is already the latest"
     elif [ -n "$CLAWDHUB_LATEST_VER" ]; then
-        echo "Updating clawdhub... ($CLAWDHUB_CURRENT_VER → $CLAWDHUB_LATEST_VER)"
+        echo "正在更新 clawdhub... ($CLAWDHUB_CURRENT_VER → $CLAWDHUB_LATEST_VER)"
         if npm install -g clawdhub@latest --no-fund --no-audit; then
             echo -e "${GREEN}[OK]${NC}   clawdhub $CLAWDHUB_LATEST_VER updated"
         else
@@ -72,7 +72,7 @@ if command -v clawdhub &>/dev/null; then
     fi
 else
     if ask_yn "clawdhub (skill manager) is not installed. Install it?"; then
-        echo "Installing clawdhub..."
+        echo "正在安装 clawdhub..."
         if npm install -g clawdhub --no-fund --no-audit; then
             echo -e "${GREEN}[OK]${NC}   clawdhub installed"
         else
@@ -85,7 +85,7 @@ fi
 
 CLAWHUB_DIR="$(npm root -g)/clawdhub"
 if [ -d "$CLAWHUB_DIR" ] && ! (cd "$CLAWHUB_DIR" && node -e "require('undici')" 2>/dev/null); then
-    echo "Installing undici dependency for clawdhub..."
+    echo "正在安装 undici dependency for clawdhub..."
     if (cd "$CLAWHUB_DIR" && npm install undici --no-fund --no-audit); then
         echo -e "${GREEN}[OK]${NC}   undici installed for clawdhub"
     else
@@ -100,7 +100,7 @@ OLD_SKILLS_DIR="$HOME/skills"
 CORRECT_SKILLS_DIR="$HOME/.openclaw/workspace/skills"
 if [ -d "$OLD_SKILLS_DIR" ] && [ "$(ls -A "$OLD_SKILLS_DIR" 2>/dev/null)" ]; then
     echo ""
-    echo "Migrating skills from ~/skills/ to ~/.openclaw/workspace/skills/..."
+    echo "正在迁移技能文件从 ~/skills/ to ~/.openclaw/workspace/skills/..."
     mkdir -p "$CORRECT_SKILLS_DIR"
     for skill in "$OLD_SKILLS_DIR"/*/; do
         [ -d "$skill" ] || continue

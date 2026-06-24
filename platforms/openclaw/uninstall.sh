@@ -106,7 +106,7 @@ fi
 if [ ${#AI_TOOLS_FOUND[@]} -eq 0 ]; then
     echo -e "${YELLOW}[SKIP]${NC} No AI CLI tools detected"
 else
-    echo "Installed AI CLI tools detected:"
+    echo "检测到已安装的 AI CLI 工具:"
     for label in "${AI_TOOL_LABELS[@]}"; do
         echo "  - $label"
     done
